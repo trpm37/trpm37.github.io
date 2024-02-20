@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+    <meta name="Keywords" content="测试html2canvas" >
+    <meta name="Description" content="测试html2canvas">
+    <meta name="apple-mobile-web-app-title" content="测试html2canvas">
+    <title>测试html2canvas</title>
+    <script type="text/javascript" src="../public/js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/html2canvas.min.js"></script>
+    <style>
+        body{margin:0;padding:0;color: #333;font-size: 14px;font-family: "微软雅黑";background-color: #fff;}
+        .btnD{padding: 10px;}
+        .btnD .btn{display: inline-block;padding: 6px 10px;background-color: #EE7701;color: #fff;border-radius: 5px;}
+        .imgBox{position: relative; width: 300px;height: 500px; border: 1px solid #ccc;background:url('../public/img/bk.jpg') no-repeat center center;background-size:100% 100%;}
+        .imgBox .img{position: absolute;left: 35px;top: 120px;z-index: 1; width: 110px;}
+        .imgBox .img:nth-child(2){left: 157px;top: 158px;}
+        .canvasBox{display: none;position: fixed;left: 0;top: 50px;z-index: 2; width: 100%;height: 100%;background-color: rgba(0,0,0,0.5);}
+        .canvasBox .canvasD{width: 100%;height: 100%;text-align: center;}
+        .canvasBox .canvasD .convas{width: 100%;height: 100%;}
+        .canvasBox .img{display: none; width: 100%;height: 100%;}
+        /*说明*/
+        .shuomingBtn{position: fixed;right: 10px;top: 10px;z-index: 100;padding: 6px 20px;color: #fff;background-color: #EE7701;border-radius: 5px;}
+        .shuoming{display: none; position: fixed;left: 0;top: 0;z-index: 100;width: 100%;height: 100%;padding-left: 20px;padding-top: 20px;background-color: rgba(0,0,0,0.5);}
+        .shuoming .bk{position: fixed;left: 0;top: 0;z-index: 1;width: 100%;height: 100%;background-color: rgba(0,0,0,0.5);}
+        .shuoming .mc{position: relative;z-index: 2; width: 80%;height: 90%;margin-left: 5%;margin-top: 5%;padding: 10px;box-sizing:border-box; background-color: #fff;}
+        .shuoming .h{color: #EE7701;font-size: 20px;}
+        .shuoming .a{display: block;margin-top: 20px;color: #78afd3;word-wrap:break-word;}
+    </style>
+  </head>
+  <body>
+    <div class="mainBox">
+        <div class="btnD"><span class="btn">确定</span></div>
+        <!-- 图片列表 -->
+        <div class="imgBox" id="imgBox">
+            <img class="img" src="../public/img/pic1.png" alt="">
+            <img class="img" src="../public/img/pic2.png" alt="">
+        </div>
+        <div class="canvasBox">
+            <div class="canvasD">
+                <!-- <canvas id="canvas"></canvas> -->
+            </div>
+            <img class="img" src="" alt="">
+        </div>
+        <!-- 说明 -->
+        <div class="shuomingBtn">说明</div>
+        <div class="shuoming">
+            <div class="bk"></div>
+            <div class="mc">
+                <div class="h">可参考以下</div>
+                <a class="a" href="https://zhuanlan.zhihu.com/p/142016847" target="_blank">https://zhuanlan.zhihu.com/p/142016847</a>
+                <a class="a" href="http://html2canvas.hertzen.com/" target="_blank">http://html2canvas.hertzen.com/</a>
+                <a class="a" href="https://blog.csdn.net/coding_1/article/details/79015042" target="_blank">https://blog.csdn.net/coding_1/article/details/79015042</a>
+                <a class="a" href="https://blog.csdn.net/qq_37165604/article/details/80665471" target="_blank">https://blog.csdn.net/qq_37165604/article/details/80665471</a>
+                <a class="a" href="https://blog.csdn.net/caomage/article/details/81168201" target="_blank">https://blog.csdn.net/caomage/article/details/81168201</a>
+                <a class="a" href="http://www.cnblogs.com/padding1015/p/9225517.html" target="_blank">http://www.cnblogs.com/padding1015/p/9225517.html</a>
+                <pre>
+                    let target = document.querySelector(".onedom")
+                    html2canvas(document.querySelector(".onedom"), {
+                      allowTaint: true, ///允许跨域图片
+                      useCORS: true, //是否尝试使用CORS从服务器加载图像
+                      width: target.offsetWidth, //为了解决安卓手机截图后出现白边的问题
+                      height: target.offsetHeight //为了解决安卓手机截图后出现白边的问题
+                    }).then(canvas => {
+                      let height = target.offsetHeight + "px"
+                      let width = target.offsetWidth + "px"
+                      canvas.style = `width:${width};height:${height};position:fixed;z-index:9999;`
+                      //为canvas添加样式
+                      let aseurl = canvas.toDataURL("image/png") //得到图片的base64编码数据
+                      let a = document.createElement("a") // 生成一个a元素
+                      let event = new MouseEvent("click") // 创建一个单击事件
+                      a.download = name || "photo" // 设置图片名称
+                      a.href = url // 将生成的URL设置为a.href属性
+                      a.dispatchEvent(event) // 触发a的单击事件
+                    })
+                </pre>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" charset="utf-8">
+        var moudle_page={
+            data: {
+                flagObj: null, //设备
+                window_w: $(window).innerWidth(),
+                window_h: $(window).innerHeight()
+            },
+            //初始化
+            init: function(){
+                var _this=this;
+                _this.data.flagObj=_this.navigator_userAgent();
+                //说明
+                $(".shuomingBtn").on("click",function(event) {
+                    $(".shuoming").show();
+                });
+                $(".shuoming").on("click",".bk",function(event) {
+                    $(".shuoming").hide();
+                });
+                //截图
+                $(".btnD").on("click",".btn",function(event) {
+                    _this.screenImg({"dom":"imgBox"});
+                });
+            },
+            //判断设备
+            navigator_userAgent: function() {
+                var userAgentInfo = navigator.userAgent;
+                var flagObj={"isMobile":false,"isAndroid":false,"isApple":false};
+                var agents = ["Android", "iPhone","SymbianOS", "Windows Phone","iPad", "iPod"];
+                for (var v = 0; v < agents.length; v++) {
+                    if (userAgentInfo.indexOf(agents[v]) > 0) {
+                        flagObj.isMobile=true;
+                        break;
+                    }
+                }
+                if (userAgentInfo.indexOf("Android") > 0) {
+                    flagObj.isAndroid=true;
+                }
+                if (userAgentInfo.indexOf("iPhone") > 0||userAgentInfo.indexOf("iPad") > 0||userAgentInfo.indexOf("iPod") > 0) {
+                    flagObj.isApple=true;
+                }
+                return flagObj;
+            },
+            //截图
+            screenImg: function(obj) {
+                var _this=this;
+                html2canvas(document.getElementById(obj.dom),{
+                    allowTaint: false, //允许污染
+                    useCORS:true,
+                    background: "#fff"
+                }).then(function(canvas) {
+                    canvas.id="canvas";
+                    $(".canvasBox").css({"display":"block"});
+                    $(".canvasBox .canvasD").html(canvas);
+                    var base64 = canvas.toDataURL('image/jpeg', 1.0);
+                    $(".canvasBox .img").attr("src",base64);
+
+                });
+            }
+        }
+
+		$(function(){
+			//初始化
+			moudle_page.init();
+		})
+
+        $(window).resize(function() {
+            moudle_page.data.window_w=$(window).innerWidth();
+            moudle_page.data.window_h=$(window).innerHeight();
+        });
+	</script>
+  </body>
+</html>

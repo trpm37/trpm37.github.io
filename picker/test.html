@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="JavaScript date time picker.">
+  <meta name="keywords" content="HTML, CSS, JS, JavaScript, pickerjs, datepicker, timepicker, front-end, frontend, web development">
+  <meta name="author" content="Chen Fengyuan">
+  <title>Picker.js</title>
+  <link rel="stylesheet" href="css/picker.css">
+ <script type="text/javascript" src="../public/js/jquery-2.1.4.min.js"></script>
+  <script src="js/picker.js"></script>
+  <style>
+        html{background: #fafafa;}
+        body{max-width: 760px;margin:0 auto;padding:0;color: #333;font-size: 14px;font-family: "微软雅黑";background-color: #fff;}
+        div{box-sizing:border-box;}
+        a{text-decoration: none;}
+        .mainBox{padding-top: 50px;}
+        .ewm{display:inline-block;height: 120px;width: 120px;}
+		.ewm img{width:100%;height:100%;}
+        /*说明*/
+        .shuomingBtn{position: fixed;right: 10px;top: 10px;z-index: 100;padding: 6px 20px;color: #fff;background-color: #EE7701;border-radius: 5px;}
+        .shuoming{display: none; position: fixed;left: 0;top: 0;z-index: 100;width: 100%;height: 100%;padding-left: 20px;padding-top: 20px;background-color: rgba(0,0,0,0.5);}
+        .shuoming .bk{position: fixed;left: 0;top: 0;z-index: 1;width: 100%;height: 100%;background-color: rgba(0,0,0,0.5);}
+        .shuoming .mc{position: relative;z-index: 2; width: 80%;height: 90%;margin-left: 5%;margin-top: 5%;padding: 10px;box-sizing:border-box; background-color: #fff;}
+        .shuoming .h{color: #EE7701;font-size: 20px;}
+        .shuoming .a{display: block;margin-bottom: 20px;color: #78afd3;word-wrap:break-word;}
+    </style>
+</head>
+<body>
+
+<div class="mainBox">
+
+   <input type="text" class="form-control js-full-picker" value="2048-10-24 05:12:02.056" style="width:300px">
+
+	<pre class="prettyprint mb-0">
+		new Picker(document.querySelector('.js-super-picker'), {
+			container: '.js-super-picker-container',
+			format: 'YYYY年M月D日H时m分s秒.SSS',
+			rows: 4,
+			headers: true,
+			text: {
+				title: '选择日期时间',
+				cancel: '取消',
+				confirm: '确认',
+			},
+			translate(type, text) {
+				const suffixes = {
+					year: '年',
+					month: '月',
+					day: '日',
+					hour: '时',
+					minute: '分',
+					second: '秒',
+					millisecond:'毫秒',
+				};
+				return Number(text) + suffixes[type];
+			},
+			increment: {
+				minute: 10,
+			},
+		});
+	</pre>
+
+	<!-- 说明 -->
+	<div class="shuomingBtn">说明</div>
+	<div class="shuoming">
+		<div class="bk"></div>
+		<div class="mc">
+			<div class="h">参考说明</div>
+			<a class="a" href="index.html" target="_blank">index.html</a>
+		</div>
+	</div>
+</div>
+	
+
+
+  <script>
+	
+	var moudle_page={
+            data: {
+                window_w: $(window).innerWidth(),
+                window_h: $(window).innerHeight()
+            },
+            //初始化
+            init: function(){
+                var _this=this;
+				
+				//说明
+                $(".shuomingBtn").on("click",function(event) {
+                    $(".shuoming").show();
+                });
+                $(".shuoming").on("click",".bk",function(event) {
+                    $(".shuoming").hide();
+                });
+				
+				//日历
+                _this.picker();
+            },
+			//日历
+            picker: function(){
+                var _this=this;
+                new Picker(document.querySelector('.js-full-picker'), {
+					format: 'YYYY年M月D日H时m分s秒.SSS',
+					headers: true,
+					rows: 3,
+					text: {
+						title: '选择日期时间',
+						cancel: '取消',
+						confirm: '确认',
+					},
+					translate(type, text) {
+						const suffixes = {
+							year: '年',
+							month: '月',
+							day: '日',
+							hour: '时',
+							minute: '分',
+							second: '秒',
+							millisecond:'毫秒',
+						};
+						return Number(text) + suffixes[type];
+					},
+				});
+            }
+        }
+
+        $(function(){
+            moudle_page.init();
+		})
+
+        $(window).resize(function() {
+            moudle_page.data.window_w=$(window).innerWidth();
+            moudle_page.data.window_h=$(window).innerHeight();
+        });
+
+  </script>
+  
+</body>
+</html>
