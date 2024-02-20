@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>async primise</title>
+	<link rel="stylesheet" type="text/css" href="../public/css/trpm-public.css">
+	<link rel="stylesheet" type="text/css" href="../public/css/style.css">
+	<style type="text/css">
+		.pre{color:#999;}
+    </style>
+	<script type="text/javascript" src="../public/js/jquery-2.1.4.min.js"></script>
+  </head>
+<body>
+    <div class="mainBox">
+		<div class="line">----------------------------------------参考网址--------------------------------------------</div>
+		<div class="ul">
+			<div class="li">primise：<a class="a" href="https://es6.ruanyifeng.com/?search=import&x=6&y=2#docs/promise " target="_blank">https://es6.ruanyifeng.com/?search=import&x=6&y=2#docs/promise</a></div>
+
+			<div class="li">async：<a class="a" href="https://es6.ruanyifeng.com/?search=import&x=6&y=2#docs/async " target="_blank">https://es6.ruanyifeng.com/?search=import&x=6&y=2#docs/async</a></div>
+		</div>
+
+		<div class="line">-----------------------------示例----------------------------------</div>
+		<pre class="pre">
+			//常规写法（pm1和pm2存在继发关系）
+			function pm1(val) {
+				console.log(val);
+				return new Promise(function(resolve,reject){
+					try {
+						let a=val;//可注释查看运行结果
+						resolve(a);
+					} catch (error) {
+						reject(error);
+					}
+				})
+			}
+			function pm2(val) {
+				console.log(val);
+				return new Promise(function(resolve,reject){
+					try {
+						let b=val;//可注释查看运行结果
+						resolve(b);
+					} catch (error) {
+						reject(error);
+					}
+				})
+			}
+			async function f() {
+				let a=await pm1(1).catch(e => console.log("a",e));//将上面a注释掉然后去掉.catch()去掉看一下运行结果
+				let b=await pm2(2).catch(e => console.log("b",e));
+				console.log(a,b);
+				let c=1;//可注释查看运行结果
+				return a+b+c;
+			}
+
+			f()
+			.then(v => console.log(v))
+			.catch(e => console.log("f",e))
+
+			
+			//用时少的写法（pm1和pm2不存在继发关系）
+			function pm1(val) {
+				console.log(val);
+				return new Promise(function(resolve,reject){
+					try {
+						let a=val;//可注释查看运行结果
+						resolve(a);
+					} catch (error) {
+						reject(error);
+					}
+				})
+			}
+			function pm2(val) {
+				console.log(val);
+				return new Promise(function(resolve,reject){
+					try {
+						let b=val;//可注释查看运行结果
+						resolve(b);
+					} catch (error) {
+						reject(error);
+					}
+				})
+			}
+			async function f() {
+				let a_pm= pm1(1);
+				let b_pm= pm2(2);
+				let a=await a_pm.catch(e => console.log("a",e));//将上面a注释掉然后去掉.catch()去掉看一下运行结果
+				let b=await b_pm.catch(e => console.log("b",e));
+				console.log(a,b);
+				let c=1;//可注释查看运行结果
+				return a+b+c;
+			}
+
+			f()
+			.then(v => console.log(v))
+			.catch(e => console.log("f",e))
+		</pre>
+		
+    </div>
+	
+    <div class="copyright">
+        <a href="http://www.beian.miit.gov.cn/" target="_blank">豫ICP备19017767号</a>
+    </div>
+	
+	<script type="text/javascript" charset="utf-8">
+
+	</script>
+</body>
+</html>

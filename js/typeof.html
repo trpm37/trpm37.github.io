@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>js 判断变量类型/是否存在</title>
+    <link rel="stylesheet" type="text/css" href="../public/css/trpm-public.css">
+    <link rel="stylesheet" type="text/css" href="../public/css/style.css">
+    <style type="text/css">
+        *{margin: 0;padding: 0;}
+		body{background-color: #223545;color:#999;}
+        .mainBox{padding: 50px 10px;font-size:14px;}
+        .a{word-wrap:break-word;color:green;}
+        .line{padding-top: 10px;padding-bottom: 10px;}
+        .item{display: flex; line-height: 20px; margin-bottom: 10px;}
+        .item .lab{padding-right: 12px;}
+        .item .info{flex:1;}
+        .item .info .li{color: #000;}
+        .item .info .z{color: #777;}
+        .tips{padding-left: 20px;padding-top: 3px; color: #777;}
+        .pre{width: 100%;}
+    </style>
+    <script type="text/javascript" src="../public/js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="../public/js/trpm-public.js"></script>
+    <script type="text/javascript">
+          trpm_publicModule.init({"public_path":"../public/"});
+    </script>
+  </head>
+<body>
+    <div class="mainBox">
+        <div class="line">-----------------------------判断变量是否存在-------------------------------------</div>
+        <div class="item">
+            <pre class="pre">
+                if (myObj == undefined) {
+            　　　　var myObj = { };
+            　　}
+            </pre>
+        </div>
+        <div class="line">-----------------------------判断对象类型-------------------------------------</div>
+        <div class="item">
+            <pre class="pre">
+                var a="1111";
+                if (typeof a == "string") {
+            　　　　console.log("字符串");
+            　　}
+
+                var a={"a":1},a2=["1111"];
+                if (typeof a == "object") {
+            　　　　console.log("a,a2对象");
+            　　}
+
+                var a=["1111"];
+                if (Array.isArray(a)) {
+            　　　　console.log("数组");
+            　　}
+                if ($.isArray(a)) {
+            　　　　console.log("数组");
+            　　}
+
+                var a=[]，a2=["111"];
+                if ($.isEmptyObject(a)) {
+            　　　　console.log("a空数组,a2非空数组");
+            　　}
+
+                var a={},a={b:1};
+                if ($.isEmptyObject(a)) {
+            　　　　console.log("a空对象,a2非空对象");
+            　　}
+
+                var a=1,a2="1",a3="1s",a4={};
+                if ($.isNumeric(a)) {
+            　　　　console.log("a,a2数字，a3,a4非数字");
+            　　}
+
+                var a=1,a2=[],a3=function(){};
+                if ($.isFunction(a)) {
+            　　　　console.log("a,a2数字，a3,a4非数字");
+            　　}
+            </pre>
+        </div>
+        
+    </div>
+
+	<script type="text/javascript" charset="utf-8">
+
+	</script>
+</body>
+</html>
