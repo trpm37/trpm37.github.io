@@ -1,0 +1,259 @@
+/**
+* Author: 倘若飘邈【阮强】 
+* <940461709@qq.com> <微信jiao_ao8>
+*/
+:root{
+  --hover_color:#5085FB;
+  --placeholder_color:#999;
+  --border_color:#e2e2e2;
+}
+*{box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;margin:0px;padding:0px;-webkit-tap-highlight-color:transparent;}
+*:before,
+*:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+:focus-visible{outline:none;}
+*::-webkit-input-placeholder{color:var(--placeholder_color);font-size:1.2rem;}
+*:-moz-placeholder{color:var(--placeholder_color);font-size:1.2rem;}
+*::-moz-placeholder{color:var(--placeholder_color);font-size:1.2rem;}
+*:-ms-input-placeholder{color:var(--placeholder_color);font-size:1.2rem;}
+html{font-family:"ui-sans-serif","system-ui","-apple-system","Segoe UI",Roboto,Ubuntu,Cantarell,"Noto Sans","sans-serif",BlinkMacSystemFont,Helvetica Neue,Arial,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";color:#333;font-size:62.5%; /*也就是10px(1em=1rem=10px) 默认是16px(1em=1rem=16px)*/ }
+@media screen and (max-width:768px){
+  html{font-size:31.25%; /*也就是5px(1em=1rem=5px)*/}
+}
+body{position:relative;width:100%;max-width:100%;}
+a{text-decoration:none;}
+a:hover,
+a:focus{color:var(--hover_color);text-decoration:none;}
+a:focus{outline:thin dotted;outline:5px auto -webkit-focus-ring-color;outline:none;outline-offset:-2px;}
+img{display: block; max-width:100%;vertical-align: middle;}
+ul,
+li{display:block;list-style:none;padding-inline-start:0px;}
+input,
+select,
+textarea,
+button{border:none;outline:none;}
+input:focus,
+button:focus{border:none;outline:none;}
+
+/*滚动条*/
+*{scrollbar-width:thin;}
+html,
+body{scrollbar-base-color:#f4f7fc;scrollbar-track-color:#f4f7fc;scrollbar-face-color:#797979;scrollbar-arrow-color:#f4f7fc;scrollbar-shadow-color:#f4f7fc;scrollbar-3dlight-color:#f4f7fc;scrollbar-highlight-color:#f4f7fc;scrollbar-darkshadow-color:#f4f7fc;}
+::-webkit-scrollbar-button{height:0;width:0;display:none;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-thumb{border:0;}
+::-webkit-scrollbar{height:10px;width:5px;background:transparent;border-radius:5px;}
+::-webkit-scrollbar-thumb{padding-top:100px;-webkit-box-shadow:inset 1px 1px 0 rgba(0,0,0,0.1),inset -1px -1px 0 rgba(0,0,0,0.07);background-color:rgba(0, 0, 0, 0.2);min-height:28px;border-radius:4px;background-clip:padding-box;}
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-thumb{border:0;}
+::-webkit-scrollbar-thumb:hover{-webkit-box-shadow:inset 1px 1px 1px rgba(0,0,0,0.25);background-color:rgba(0,0,0,0.4);}
+::-webkit-scrollbar-thumb:active{-webkit-box-shadow:inset 1px 1px 3px rgba(0,0,0,0.35);background-color:rgba(0,0,0,0.5);}
+
+.trpm-iconfont{font-family:"iconfont" !important;font-size:16px;font-style:normal;-webkit-font-smoothing:antialiased;-webkit-text-stroke-width:0.2px;-moz-osx-font-smoothing:grayscale;}
+
+/* 显示隐藏 */
+.trpm-none{display:none!important;}
+.trpm-block{display:block!important;}
+.trpm-hidden{visibility:hidden!important;}
+.trpm-visible{visibility:visible!important;}
+/* flex */
+.trpm-flex{display: -webkit-box;display: -webkit-flex;display: flex;}
+.trpm-flex-x{display: -webkit-box;display: -webkit-flex;display: flex;justify-content:center;}
+.trpm-flex-y{display: -webkit-box;display: -webkit-flex;display: flex;align-items: center;}
+.trpm-flex-xy{display: -webkit-box;display: -webkit-flex;display: flex;align-items: center;justify-content:center;}
+.trpm-flex-column{display: -webkit-box;display: -webkit-flex;display: flex;flex-direction: column;}
+.trpm-flex-between{display: -webkit-box;display: -webkit-flex;display: flex;justify-content: space-between;}
+.trpm-flex-1{-webkit-box-flex:1!important;-webkit-flex:1!important;flex:1!important;}
+.trpm-flex-none{-webkit-box-flex:none!important;-webkit-flex:none!important;flex:none!important;}
+/* position */
+.trpm-position-center{position: absolute;left: 50%;top: 50%;transform: translate(-50%,-50%);}
+/* btn */
+.trpm-btn{display:flex;align-items:center;justify-content:center;white-space:nowrap;line-height:26px;padding:0px 15px;color:#fff;font-size:1.4rem;background-color:var(--hover_color);border-radius:4px;text-align:center;cursor:pointer;}
+
+.trpm-btn:hover,
+.trpm-btn:active{opacity: 0.8;}
+/* 下三角 */
+.trpm-sj{width:0; height:0; line-height:0; overflow:hidden; font-size:0; border-width:6px; border-color:var(--border_color) transparent transparent  transparent; border-style:solid dashed dashed dashed;}
+/* input */
+.trpm-inp{width: 100%;height:30px;padding: 0 10px;border: 1px solid var(--border_color);border-radius: 4px;background-color: transparent;}
+.trpm-inp:hover,
+.trpm-inp:focus{border: 1px solid var(--hover_color);}
+/* 内容弹框 
+  <div class="trpm-alert">
+      <div class="trpm-bk"></div>
+      <div class="trpm-mc">
+          <div class="trpm-x">+</div>
+          <div class="trpm-tl">标题</div>
+      </div>
+  </div>
+*/
+.trpm-alert{display: none; position:fixed;left:0;top:0;z-index:100;height:100%;width:100%;margin:auto;overflow:hidden;background-color:transparent;font-size: 1.4rem;}
+.trpm-alert .trpm-bk{position:absolute;left:0;top:0;height:100%;width:100%;z-index:1;background-color:rgba(0, 0, 0, 0.5);}
+.trpm-alert .trpm-mc{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;width:300px;padding:10px;background:#fff;border-radius:6px;}
+.trpm-alert .trpm-mc .trpm-x{position:absolute;right:10px;top:10px;z-index:1;height:20px;line-height:20px;color:#777;font-size:3.4rem;cursor: pointer;transform:rotate(45deg);}
+.trpm-alert .trpm-mc .trpm-tl{font-size: 1.6rem;font-weight: bold;}
+/* 消息弹框 
+  <div class="trpm-alert-msg">
+      <div class="trpm-mc">
+        <div class="trpm-info">消息！</div>
+      </div>
+  </div>
+*/
+.trpm-alert-msg{position:fixed;left:0;top:0;z-index:1000;height:100%;width:100%;overflow:hidden;background-color:rgba(0, 0, 0, 0.1);}
+.trpm-alert-msg .trpm-mc{position: fixed;left: 50%;top: 50%;transform: translate(-50%,-50%); z-index: 1;min-width: 120px; max-width:200px;min-height: 120px; max-height: 200px;padding:20px;overflow: hidden; color: #fff;font-size:1.2rem;background: rgba(0, 0, 0, 0.5);border-radius:5px;box-sizing:border-box;text-align:center;}
+.trpm-alert-msg .trpm-info{display: flex;align-items: center;justify-content: center;width: 100%;height: 100%; line-height: 18px;word-break: break-all;text-align: center;}
+/* select 下拉选择框
+  <div class="trpm-sel">
+      <div class="nm"><span class="lab">请选择</span><span class="val"></span><span class="trpm-iconfont icon_bottom sj"></span></div>
+      <div class="options">
+        <div class="scroll">
+            <div class="list">
+              <div class="option"><span class="txt">角色1</span></div>
+            </div>
+        </div>
+      </div>
+  </div>
+*/
+.trpm-sel{position: relative;z-index: 1;width: 100%;}
+.trpm-sel .nm{display: flex;align-items: center; justify-content: space-between;width: 100%;padding: 7px 12px;overflow: hidden;border-radius: 6px;border:1px solid var(--border_color);}
+.trpm-sel .nm .lab,
+.trpm-sel .nm .val{margin-right: 12px;white-space: nowrap;overflow: hidden;}
+.trpm-sel .nm .sj{width:0; height:0; line-height:0; overflow:hidden; font-size:0; border-width:6px; border-color:#666 transparent transparent  transparent; border-style:solid dashed dashed dashed;margin-bottom: -8px;cursor: pointer;}
+.trpm-sel:hover .nm .sj{transform: rotate(180deg);margin-bottom: 0;margin-top: -8px;}
+.trpm-sel .options{display:none;position:absolute;left:-1px;top:0;z-index:1;width:auto;min-width:100%;height:auto;}
+.trpm-sel:hover .options{display: block;}
+.trpm-sel .options .scroll{position: relative; width: 100%;max-height: 300px;overflow-x: hidden;overflow-y: auto; margin-top:31px;background-color: #fff;border-radius: 6px;border:1px solid var(--border_color);}
+.trpm-sel .options .list{width: 100%;}
+.trpm-sel .options .option{justify-content:space-between;line-height:28px;padding:2px 12px;cursor: pointer; background-image:linear-gradient(#fff,hsla(0,0%,100%,.7));box-shadow:0 0 3px rgba(0,0,0,.06);white-space: nowrap;}
+.trpm-sel .options .option:hover{background-image:linear-gradient(#fff,hsla(0,0%,100%,.5) 30%,#fff);box-shadow:0 0 26px rgba(0,61,131,.1);transform:translateY(-1px);}
+.trpm-sel .options .option:hover .txt{color:var(--hover_color);}
+/*提示
+  <div class="trpm-tips_down">
+      <div class="down"> 
+          <div class="sj"></div> 
+          <div class="ul"> 
+              <div class="li"><span class="txt">修改</span></div>
+          </div>
+      </div> 
+  </div>
+*/
+.trpm-tips{display:none;position:absolute;left:0;top:0;z-index:4;width:auto;min-width:100%;height:auto;color: #333;font-size: 12px;}
+.trpm-tips .down{position: relative; width: 100%;margin-top:30px;}
+.trpm-tips .sj{position: absolute;left: 50%;top: -11px;z-index: 1;transform: translate(-50%,0); width:0; height:0; line-height:0; overflow:hidden; font-size:0; border-width:6px; border-color: transparent transparent #fff transparent; border-style:dashed dashed solid dashed;}
+.trpm-tips .ul{width: 100%;overflow-x: hidden;overflow-y: auto;background-color: #fff;border-radius: 6px;}
+.trpm-tips .ul .li{justify-content:space-between;line-height:28px;padding:2px 12px;cursor: pointer; background-image:linear-gradient(#fff,hsla(0,0%,100%,.7));box-shadow:0 0 3px rgba(0,0,0,.06);white-space: nowrap;}
+.trpm-tips .ul .li:hover{background-image:linear-gradient(#fff,hsla(0,0%,100%,.5) 30%,#fff);box-shadow:0 0 26px rgba(0,61,131,.1);transform:translateY(-1px);}
+.trpm-tips .ul .li:hover .txt{color:#3F61F8;}
+.trpm-tips .ul .li .icon{margin-right: 6px;}
+.trpm-tips .ul .li:hover .icon{color:#3F61F8;}
+/*switch
+  <div class="trpm-switch trpm-switch-on">
+      <div class="trpm-sw"><div class="trpm-round"></div></div>
+  </div>
+*/
+.trpm-switch{position: relative;display: inline-block; width: 40px;height: 20px; padding: 5px 5px; border-radius: 20px; background-color: #DADEE6;cursor: pointer;}
+.trpm-switch .trpm-sw{position: relative;width: 100%;height: 100%;}
+.trpm-switch .trpm-round{position: absolute;left: -2px;top: -3px;z-index: 1; width: 16px;height: 16px;border-radius: 50%; background-color: #fff;}
+.trpm-switch.trpm-switch-on{background-color: var(--hover_color);}
+.trpm-switch.trpm-switch-on .trpm-round{left: 17px;background-color: #fff;}
+/* list item
+  <div class="trpm-list">
+      <div class="trpm-item"><div class="trpm-item-m"></div></div>
+  </div>
+*/
+.trpm-list{--space:10px;display:flex;flex-wrap:wrap;margin-left:-var(--space);}
+.trpm-list .trpm-item{width: 20%;}
+.trpm-list .trpm-item .trpm-item-m{margin: 0 0 var(--space) var(--space);}
+/* tab 
+  <div class="trpm-tab">
+      <div class="th">
+          <div class="td"><span class="txt">名称</span></div>
+          <div class="td"><span class="txt">操作</span></div>
+      </div>
+      <div class="tbody">
+          <div class="tr">
+              <div class="td"><span class="txt">倘若飘邈</span></div>
+              <div class="td"><span class="btn edit">编辑</span></div>
+          </div>
+      </div>
+  </div>
+*/
+.trpm-tab{display: flex;flex: 1; flex-direction: column;width: 100%;font-size: 1.2rem;}
+.trpm-tab .tbody{flex: 1; overflow-x: hidden;overflow-y: auto;}
+.trpm-tab .th,
+.trpm-tab .tr{display:flex;align-items:center;width:100%;min-height:40px;border-radius:8px;}
+.trpm-tab .th{background-color:#F4F7F9;color: #8491AA;}
+.trpm-tab .tr:nth-child(2n){background-color:#F8FBFC;}
+.trpm-tab .tr:hover{background-color:#F4F7F9;}
+.trpm-tab .td{display: flex;align-items: center; flex: 1;line-height: 18px; overflow: hidden;padding:4px 12px;}
+.trpm-tab-border{border: 1px solid #EFF3F7;border-radius: 6px;}
+.trpm-tab-border .th, 
+.trpm-tab-border .tr{border-radius: 0;}
+.trpm-tab-border .tr{border-bottom: 1px solid #EFF3F7;}
+.trpm-tab-border .tr:nth-child(2n){background-color: transparent;}
+.trpm-tab-border .tr:hover{background-color: #F8FBFC;}
+.trpm-tab-border .tr:last-child{border-bottom: none;}
+/* 图片 
+  <div class="trpm-img-d">
+      <div class="trpm-mn">
+          <div class="trpm-img">
+              <img src="" alt="" />
+          </div>
+      </div>
+  </div>
+*/
+.trpm-img-d{--border-radius:6px;position:relative;width:100%;line-height:0;}
+.trpm-img-d:after{content: "";display: block; padding-bottom: 100%;}
+.trpm-img-d .trpm-mn{display: flex;align-items: center;justify-content: center; position: absolute;left: 0;top: 0;z-index: 1; width: 100%;height: 100%; border-radius: var(--border-radius);}
+.trpm-img-d .trpm-mn .trpm-img{display: flex;align-items: center;position: relative; width: 100%;height: 100%;overflow: hidden;background-image: url();background-repeat: no-repeat;background-position: center;background-size: cover; border-radius: var(--border-radius);}
+.trpm-img-d .trpm-mn .trpm-img img{position: absolute;left: 50%;top: 50%;transform: translate(-50%,-50%);width: 100%;height: auto;border-radius: var(--border-radius);}
+/* 树目录 
+  <div class="trpm-tree">
+      <div class="tree-ul">
+          <div class="tree-li">
+              <div class="tree-tl sub ck">
+                  <div class="tl-lf">
+                      <i class="trpm-iconfont icon_rightm arrow"></i>
+                      <i class="trpm-iconfont icon_folder-add folder"></i>
+                      <i class="trpm-iconfont icon_checkbox checkbox"></i>
+                      <i class="trpm-iconfont icon_radio radio"></i>
+                      <span class="txt">父级</span>
+                  </div>
+                  <div class="tl-rg"></div>
+              </div>
+              <div class="tree-ul">子集</div>
+          </div>
+      </div>
+  </div>
+*/
+.trpm-tree{width:100%;height:100%;overflow-y:auto;}
+.trpm-tree .tree-ul{padding-left: 18px;}
+.trpm-tree .tree-ul:first-child{padding-left: 0px;}
+.trpm-tree .tree-li{width: 100%;}
+.trpm-tree .tree-tl{position: relative;display: flex;align-items: center;justify-content: space-between;margin-bottom: 10px;}
+.trpm-tree .tree-tl:hover{color: var(--hover_color);}
+.trpm-tree .tree-tl .tl-lf{display: flex;align-items: center; flex:1;position: relative;z-index: 1; overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor: pointer;}
+.trpm-tree .tree-tl .tl-rg{padding-left: 8px;z-index: 1;}
+.trpm-tree .tree-tl .trpm-iconfont{margin-right: 5px; font-size: 16px;color: #666;}
+.trpm-tree .tree-tl .arrow{font-size: 12px;}
+.trpm-tree .tree-tl:hover .trpm-iconfont{color: var(--hover_color);}
+.trpm-tree .tree-tl.sub .arrow{transform: rotate(90deg);}
+.trpm-tree .tree-tl.sub .folder::before{content: "\e6cc";}
+.trpm-tree .tree-tl.ck .checkbox::before{content: "\e755";}
+.trpm-tree .tree-tl.ck .radio::before{content: "\e6bd";}
+/* 时间轴 
+  <div class="trpm-timeline">
+      <div class="timeline-item">
+          <i class="timeline-axis"></i> 
+          <div class="timeline-txt">
+              <div class="time">2022年10月27日 10:00 - 2022年10月30日 10:00</div> 
+          </div> 
+      </div> 
+  </div>
+*/
+.trpm-timeline{padding-left: 5px;}
+.trpm-timeline .timeline-item{position:relative;padding-bottom:20px;}
+.trpm-timeline .timeline-item:last-child{padding-bottom:0;}
+.trpm-timeline .timeline-item::before{content:"";display:block;position:absolute;left:0px;top:0;z-index:0;width:1px;height:100%;border: 1px dashed #5FB878;}
+.trpm-timeline .timeline-axis{position:absolute;left:-5px;top:0;z-index:10;width:12px;height:12px;line-height:20px;background-color:#fff;color:#5FB878;border:2px solid #5FB878;border-radius:50%;text-align:center;cursor:pointer;}
+.trpm-timeline .timeline-txt{padding-left: 16px;}

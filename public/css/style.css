@@ -1,0 +1,11 @@
+
+body{position:relative;width:100%;max-width:100%;background-color: #223545;color: #999;}
+a{color:dimgray;text-decoration:none;}
+a:hover,a:focus{color:#fff;text-decoration:none;}
+
+.mainBox{padding: 10px 10px 60px 10px;}
+.btn{position: relative;display:inline-block;height: 35px;line-height: 35px;width: 200px;text-align: center; background-color: #00dea5;color: #fff;}
+.line{padding:20px 0; color:#fff;}
+/* 底部版权 */
+.copyright{position: fixed;left: 0;bottom: 0;z-index: 1;width: 100%;padding: 20px 0;background-color: #22343E;color:#015659;text-align: center;}
+.copyright a{color:#FFFFC5;text-decoration: none;}
