@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>上传相关 js</title>
+    <style type="text/css">
+		body{background-color: #223545;color:#ccc;}
+        .mainBox{font-size:16px;}
+    </style>
+  </head>
+<body>
+    <div class="mainBox">
+        <div>获取file Blob</div>
+        <pre>
+            //例如从“文件被加入队列以后触发的回调事件”返回值file中获取Blob 案例来源发布页
+            "upload_fileQueued": function (up_bkData) {
+                // console.log("upload_fileQueued：",up_bkData);
+                var fileData = up_bkData.file;
+                var file_id = fileData.id;
+                var file_name = fileData.name;
+                //读取图片数据
+                let blob=fileData.source.source; //获取blob
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    let data = e.target.result;
+                    //加载图片获取图片真实宽度和高度
+                    var image = new Image();
+                    image.onload=function(){
+                        var width = image.width;
+                        var height = image.height;
+                        if(width/height==_this.data.panoUpload.per){
+                            geFormData();
+                        }
+                        else{
+                            _this.data.panoUpload.file_fail.push(fileData);
+                            //_this.data.panoUpload.uploadObj.removeFile({"file":fileData});
+                            var curDom=$(".webuploader-propress .webuploader-propress-li[data-id="+file_id+"]");
+                            curDom.find(".webuploader-propress-sta").text("上传失败:宽高比不符合2:1");
+                        }
+                        _this.data.panoUpload.file_cou++;
+                    };
+                    image.src= data;
+                };
+                reader.readAsDataURL(blob);
+            },
+        </pre>
+
+
+    </div>
+	<script type="text/javascript" charset="utf-8">
+
+	</script>
+</body>
+</html>

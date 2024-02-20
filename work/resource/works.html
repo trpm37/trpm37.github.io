@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>作品库</title>
+	<link rel="stylesheet" type="text/css" href="../../../public/css/trpm-public.css">
+	<style type="text/css">
+		.mainBox{padding: 10px 20px;}
+		.pre{color:#000;}
+    </style>
+	<script type="text/javascript" src="../../../public/js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		var paramObj={
+			"TMPL": '__TMPL__',
+            "resourcePublic":'{$Think.config.__resourcePublic__}',
+            "resourceWasee":"{$Think.config.__resourceWasee__}",
+            "session_anchor_id":"{$Think.session.anchor_id}",
+            "session_anchor_auth_id":"{$Think.session.anchor_auth_id}",
+            "base_anchor_id":"{$_baseRtn_.anchorInfo.id}",
+            "base_anchor_nickname":"{$_baseRtn_.anchorInfo.nickname}",
+            "base_anchor_mobile":"{$_baseRtn_.anchorInfo.mobile}",
+            "base_anchor_headimgurl":"{$_baseRtn_.anchorInfo.headimgurl}",
+            "wxAuthCode":"{$_wxAuthCode_}",
+            "pool":"{$Think.get._pool_}",
+            "live_vkey":"{$Think.config.LIVE_VKEY}",
+            "action_name":"{$Think.ACTION_NAME}",
+            "test":"{$Think.get.test}",
+		};
+	</script>
+	<script type="text/javascript" src="../../../public/js/trpm-public.js"></script>
+	<script type="text/javascript">
+        trpm_publicModule.init({"public_path":paramObj.resourcePublic});
+    </script>
+	<script type="text/javascript" src="js/works.js"></script>
+	
+  </head>
+<body>
+    <div class="mainBox">
+        <div class="trpm-btn btn-up">选择</div>
+    </div>
+	
+	<script type="text/javascript" charset="utf-8">
+		var moudle_page={
+            data: {
+                window_w: $(window).innerWidth(),
+                window_h: $(window).innerHeight()
+            },
+            //初始化
+            init: function(){
+                var _this=this;
+				
+				// 缩略图
+				$(".mainBox").on("click",".btn-up",function(){
+					var thisObj=$(this);
+					//素材库
+					let worksObj = new worksModule();
+					worksObj.alert({
+						"ty":3,
+						"check":0,
+						"ok_callBack": function(bkData){
+							// console.log(bkData.data);
+						}
+					});
+				})
+            }
+        }
+
+        $(function(){
+            moudle_page.init();
+		})
+	</script>
+</body>
+</html>

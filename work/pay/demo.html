@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>支付</title>
+	<link rel="stylesheet" type="text/css" href="../../public/css/trpm-public.css">
+	<link rel="stylesheet" type="text/css" href="../../public/css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/pay.css">
+	<style type="text/css">
+		.pre{color:#999;}
+    </style>
+	<script type="text/javascript" src="../../public/js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		var paramObj={
+			"TMPL": '__TMPL__',
+            "resourcePublic":'{$Think.config.__resourcePublic__}',
+            "resourceWasee":"{$Think.config.__resourceWasee__}",
+            "session_anchor_id":"{$Think.session.anchor_id}",
+            "session_anchor_auth_id":"{$Think.session.anchor_auth_id}",
+            "base_anchor_id":"{$_baseRtn_.anchorInfo.id}",
+            "base_anchor_nickname":"{$_baseRtn_.anchorInfo.nickname}",
+            "base_anchor_mobile":"{$_baseRtn_.anchorInfo.mobile}",
+            "base_anchor_headimgurl":"{$_baseRtn_.anchorInfo.headimgurl}",
+            "wxAuthCode":"{$_wxAuthCode_}",
+            "pool":"{$Think.get._pool_}",
+            "live_vkey":"{$Think.config.LIVE_VKEY}",
+            "action_name":"{$Think.ACTION_NAME}",
+            "test":"{$Think.get.test}",
+		};
+	</script>
+	<script type="text/javascript" src="../../public/js/trpm-public.js"></script>
+	<script type="text/javascript">
+        trpm_publicModule.init({"public_path":paramObj.resourcePublic});
+    </script>
+	<script type="text/javascript" src="js/pay.js"></script>
+	
+  </head>
+<body>
+    <div class="mainBox">
+        <pre class="pre">
+            /*初始化上传示例 注释部分非必传*/
+			trpm_payModule.init({
+				"pay_vkey":paramObj.live_vkey, //支付vkey
+				// "order_Obj": {
+				//     "ajaxUrl":'/p/'+paramObj.pool+'/Wasee/Index/orderConfirm',
+				//     "params":{
+				//         "obj_type":"",
+				//         "obj_id":0,
+				//         "needPayUrl":1,
+				//         "page_url":"",
+				//         "money":0,
+				//     },
+				//     "callBack": function(bkData){}
+				// },
+				// "balance_Obj": {
+				//     "ajaxUrl":'/p/'+paramObj.pool+'/Wasee/Index/getAnchorInfo',
+				//     "params":{},
+				//     "callBack": function(bkData){}
+				// },
+				// "wx_Obj": {
+				//     "ajaxUrl":'/p/'+paramObj.pool+'/Home/Service/queryOrderStatus',
+				//     "params":{},
+				// },
+				"callBack": function () { //支付完成回调
+				}
+			});
+			/*其他函数可以单独调用 比如下单*/
+			trpm_payModule.subOrder({
+				// "ajaxUrl":'/p/'+paramObj.pool+'/Wasee/Index/orderConfirm',
+				// "params":{
+				//     "obj_type":"",
+				//     "obj_id":0,
+				//     "needPayUrl":1,
+				//     "page_url":"",
+				//     "money":0,
+				// },
+				// "callBack": function(bkData){}
+			});
+			/*其他函数可以单独调用 比如支付方式弹框*/
+			trpm_payModule.payway({
+				ali_url: "https://www.wasee.com/Wasee/VRHome/alipayTradePagePay?vkey=988253127&order_id=H512515461415371",
+				balancepay_url: "https://www.wasee.com/index.php?g=Webapp&m=Pay&a=memberBalanceUrl&extra_common_param=988253127|23||2|www.wasee.com&order_id=H512515461415371",
+				id: 6543,
+				info: "操作成功",
+				order_id: "H512515461415371",
+				status: 1,
+				wx_url: "",
+				wx_url_qrcode: "https://www.wasee.com/index.php?g=Home&m=Service&a=genQRCode&url=weixin%3A%2F%2Fwxpay%2Fbizpayurl%3Fpr%3DlNENQB8&logo=&code=RVE4NldFRkd1REdTaTROZytNSmxrdVB2MTkwV0tIT2U&business=Index",
+			})
+        </pre>
+    </div>
+	
+    <div class="copyright">
+        <a href="http://www.beian.miit.gov.cn/" target="_blank">豫ICP备19017767号</a>
+    </div>
+	
+	<script type="text/javascript" charset="utf-8">
+
+	</script>
+</body>
+</html>

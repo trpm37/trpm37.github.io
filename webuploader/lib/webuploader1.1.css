@@ -1,0 +1,18 @@
+.webuploader-container{position:relative;}
+.webuploader-element-invisible{position:absolute!important;clip:rect(1px,1px,1px,1px);opacity:0;}
+.webuploader-pick{position:relative;width:100%;height:100%;}
+.webuploader-pick-disable{opacity:0.6;pointer-events:none;}
+/* 添加上传进度样式 */
+.webuploader-propress{display: none; position: fixed;left: 0;top: 0; z-index: 200;width: 100%;height: 100%;color: #fff;background-color: rgba(0,0,0,0.6);}
+.webuploader-propress .webuploader-propress-x{position:absolute;right:15px;top:15px;z-index:1;width: 30px; height:30px;line-height:25px;font-size:30px;border-radius: 50%; background-color: indianred;text-align: center; transform:rotate(45deg);cursor: pointer;}
+.webuploader-propress .webuploader-propress-mc{width: 100%;height: 100%;font-size: 14px;}
+.webuploader-propress .webuploader-propress-ul{position:relative;width: 90%;max-width: 760px; }
+.webuploader-propress .webuploader-propress-li{padding-bottom: 15px;}
+.webuploader-propress .webuploader-propress-tl{padding-bottom: 8px;}
+.webuploader-propress .webuploader-propress-lab{width: 70px;color: #F5F5F5;}
+.webuploader-propress .webuploader-propress-sta{flex:1;padding-left: 10px;color:red;}
+.webuploader-propress .webuploader-propress-cancel{padding-right: 10px;color: #fff;cursor: pointer;}
+.webuploader-propress .webuploader-propress-propress{flex:1;}
+.webuploader-propress .webuploader-propress-bar{position: relative; flex:1;height: 20px;line-height: 20px;overflow: hidden; background-color: #F5F5F5;border-radius: 13px;}
+.webuploader-propress .webuploader-propress-per{display: inline-block;min-width: 24px; height: 100%;background-color: #5085fb;border-radius: 13px;text-align: center;}
+.webuploader-propress .webuploader-propress-txt{position: absolute;left: 0;top: 0;z-index: 1;width: 100%;height: 100%; color: #333;font-size: 12px; text-align: center;}

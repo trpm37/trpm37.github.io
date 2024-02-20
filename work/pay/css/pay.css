@@ -1,0 +1,16 @@
+/*支付*/
+.trpm-alert.payway-alert .trpm-mc{top: calc(50% - 200px);left: calc(50% - 150px);width: 300px;padding: 10px 20px 10px 20px;font-size: 1.4rem;color: #333;background-color: #fff;}
+.trpm-alert.payway-alert .trpm-mc .trpm-x{right: 12px;top: 12px;width: 20px;height: 20px; font-size:2.6rem;color:#666;transform:rotate(0deg);background-image:url("../img/x.png");background-repeat: no-repeat;background-position: center center;background-size:100% 100%;}
+.trpm-alert.payway-alert .trpm-mc .trpm-x:hover{background-image:url("../img/x2.png");}
+.trpm-alert.payway-alert .trpm-mc .trpm-tl{margin: 8px 0 10px 0;padding:0; font-weight: 500;font-size: 1.4rem;color:#333;box-shadow: none;text-align:center;}
+.trpm-alert.payway-alert .trpm-mc .payway-price-d{padding-bottom: 15px; font-size: 1.2rem;color:#666; text-align: center;}
+.trpm-alert.payway-alert .trpm-mc .payway-price-d .payway-red{color: #FF9533;}
+.trpm-alert.payway-alert .trpm-mc .payway-opt{display: none;padding: 10px;border-radius: 5px; cursor: pointer;}
+.trpm-alert.payway-alert .trpm-mc .payway-opt:hover{box-shadow: 0px 1px 13px rgba(0, 0, 0, 0.2);}
+.trpm-alert.payway-alert .trpm-mc .payway-opt:before{content:"";display:inline-block;width:20px;height:20px;margin-right:5%;background-image:url("../../images/apply1.png");background-repeat: no-repeat;background-position: center center;background-size:100% 100%;}
+.trpm-alert.payway-alert .trpm-mc .payway-surplus:before{background-image:url("../img/balance.png");}
+.trpm-alert.payway-alert .trpm-mc .payway-alipay:before{background-image:url("../img/alipay.png");}
+.trpm-alert.payway-alert .trpm-mc .payway-wachat:before{background-image:url("../img/wechat.png");}
+.trpm-alert.payway-alert .trpm-mc .payway-wachat .payway-ewm-d{display: none;margin-left: -8px;}
+.trpm-alert.payway-alert .trpm-mc .payway-wachat .payway-ewm{width: 150px;}
+.trpm-alert.payway-alert .trpm-mc .payway-wachat .payway-tips{font-size: 1.2rem;text-align: center;}

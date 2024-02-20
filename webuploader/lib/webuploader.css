@@ -1,0 +1,40 @@
+.webuploader-container{position:relative;}
+.webuploader-element-invisible{position:absolute!important;clip:rect(1px,1px,1px,1px);opacity:0;}
+.webuploader-pick{position:relative;width:100%;height:100%;}
+.webuploader-pick-disable{opacity:0.6;pointer-events:none;}
+/* 添加上传进度样式 */
+.webuploader-propress{display: none; position: fixed;left: 0;top: 0; z-index: 200;width: 100%;height: 100%;color: #fff;background-color: rgba(0,0,0,0.6);}
+.webuploader-propress .webuploader-propress-x{position:absolute;right:15px;top:15px;z-index:1;width: 30px; height:30px;line-height:25px;font-size:30px;border-radius: 50%; background-color: indianred;text-align: center; transform:rotate(45deg);cursor: pointer;}
+.webuploader-propress .webuploader-propress-mc{width: 100%;height: 100%;font-size: 14px;}
+.webuploader-propress .webuploader-propress-ul{position:relative;width: 90%;max-width: 760px; }
+.webuploader-propress .webuploader-propress-li{padding-bottom: 15px;}
+.webuploader-propress .webuploader-propress-tl{padding-bottom: 8px;}
+.webuploader-propress .webuploader-propress-lab{width: 70px;color: #F5F5F5;}
+.webuploader-propress .webuploader-propress-sta{flex:1;padding-left: 10px;color:red;}
+.webuploader-propress .webuploader-propress-cancel{padding-right: 10px;color: rgb(235, 103, 103);cursor: pointer;}
+.webuploader-propress .webuploader-propress-propress{flex:1;}
+.webuploader-propress .webuploader-propress-bar{flex:1;height: 20px;line-height: 20px;overflow: hidden; background-color: #F5F5F5;border-radius: 5px;}
+.webuploader-propress .webuploader-propress-per{display: inline-block;min-width: 24px; height: 100%;background-color: #11B395;border-radius: 5px 0 0 5px;text-align: center;}
+/* 添加素材库样式 */
+.webuploader-material{position: fixed;top: 0;right: -100%;z-index: 100;width: 100%;height: 100%;}
+.webuploader-material .webuploader-material-mc{width: 100%;height: 100%;background-color: #eee;}
+.webuploader-material .webuploader-material-jt{position: relative;}
+.webuploader-material .webuploader-material-jt:after{content:" ";position:absolute;position:absolute;top:36%;right:6px;display:inline-block;height:6px;width:6px;border-width:2px 2px 0 0;border-color:#c8c8cd;border-style:solid;transform:rotate(45deg);}
+.webuploader-material .webuploader-material-lf{text-align: left;}
+.webuploader-material .webuploader-material-rg{text-align: right;}
+.webuploader-material .webuploader-material-top{display: flex; width: 100%;line-height: 35px;padding: 8px 10px;background-color: #1c1b20;}
+.webuploader-material .webuploader-material-col{flex:1;}
+.webuploader-material .webuploader-material-backBtn{display:inline-block;line-height: 28px; padding:0px 15px;border-radius:3px;font-size:13px;color:#fff;background-color:transparent;cursor:pointer;}
+.webuploader-material .webuploader-material-backBtn.jt:after{top: 37.2%;left: 4px; transform:rotate(-133deg);}
+.webuploader-material .webuploader-material-okBtn{display:inline-block;line-height: 28px;padding:0px 15px;border-radius:3px;font-size:13px;color:#fff;background-color:#05daaa;cursor:pointer;}
+.webuploader-material .webuploader-material-list-box{width: 100%;height: calc(100% - 55px);overflow-y: auto;}
+.webuploader-material .webuploader-material-list-box .webuploader-material-list{display: flex;flex-wrap: wrap;/*justify-content: space-between;*/padding: 10px 0 10px 10px;}
+.webuploader-material .webuploader-material-list-box .webuploader-material-li{position:relative;width:18%;margin:0 2% 10px 0;}
+.webuploader-material .webuploader-material-list-box .webuploader-material-li.ck{opacity: 1;}
+.webuploader-material .webuploader-material-list-box .webuploader-material-img{width:auto;max-width:100%;}
+.webuploader-material .webuploader-material-list-box .webuploader-material-gou{position: absolute;top: 0;right: 0;z-index: 1;display: inline-block; width:100%;height: 100%;color: #fff;background-image:url("../../public/img/gou2.png");background-color:rgba(0,0,0,0.5);background-repeat: no-repeat;background-position: center center;background-size:25px auto;opacity: 0;}
+.webuploader-material .webuploader-material-list-box .webuploader-material-li.ck .webuploader-material-gou{background-image:url("../../public/img/gou.png");opacity: 1;}
+.webuploader-material .webuploader-material-list-box .webuploader-material-loadMore{width: 100%;color: #999;font-size: 12px;text-align: center;}
+.webuploader-material.selBox .webuploader-material-ul{width: 100%;}
+.webuploader-material.selBox .webuploader-material-ul .webuploader-material-li{display: flex;width: 100%;height: 40px;line-height: 40px;border-bottom: 1px solid #eee;background-color: #fff; cursor:pointer;}
+.webuploader-material.selBox .webuploader-material-ul .webuploader-material-txt{flex:1;padding-left: 10px;}

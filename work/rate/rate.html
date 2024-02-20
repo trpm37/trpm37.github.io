@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>720Think 评论</title>
+    <link rel="stylesheet" type="text/css" href="css/rate.css">
+    <script type="text/javascript" src="../../public/js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/rate.js"></script>
+    <style type="text/css">
+		body{background-color: #223545;color:#FFFFC5;}
+        a{color:#FFFFC5;text-decoration: none;}
+        .mainBox{font-size:16px;}
+        .a{display: block;word-wrap:break-word;}
+    </style>
+  </head>
+<body>
+
+
+    <div class="mainBox">
+        <a class="a" href="http://www.think720.com/index.php?g=wasee&m=waseehome&a=bodycompoundlistforslide&id=49&anchor_id=1">实例页面地址：http://www.think720.com/index.php?g=wasee&m=waseehome&a=bodycompoundlistforslide&id=49&anchor_id=1</a>
+        <br/>
+        <div>搜索：评论，rateModule</div>
+    </div>
+
+	<script type="text/javascript" charset="utf-8">
+        var moudle_page={
+            data: {
+                event_name: "click", //点击事件名
+                resourceWasee:"{$Think.config.__resourceWasee__}",
+                _pool_:"{$Think.get._pool_}",
+                session_anchor_id: "{$Think.session.anchor_id}",
+                session_anchor_auth_id: "{$Think.session.anchor_auth_id}",
+                base_nickname: "{$_baseRtn_['anchorInfo']['nickname']}",
+                base_headimgurl: "{$_baseRtn_['anchorInfo']['headimgurl']}",
+                _wxAuthCode_: "{$_wxAuthCode_}"
+            },
+            //初始化
+            init: function(){
+                var _this=this;
+                //评论
+                $(".swiperBox").on(_this.data.event_name,".rightBottom .msg",function(event) {
+                    var idd=$(this).attr("idd");
+                    if(_this.data.session_anchor_id==""){
+                        if(_this.data.session_anchor_auth_id==""){
+                            $.getAjaxData({
+                                url:"{:U('Wasee/Base/getAuthCode')}&code="+_this.data._wxAuthCode_,
+                                async:false,
+                                callBack:function(resData){
+                                    window.location="{:U('Wasee/Auth/wxAuth')}&code="+resData.data+'&returnUrl='+encodeURIComponent(window.location.href);
+                                },
+                                errorBack:function(resData){
+                                    $.toast(resData.info, "text");
+                                }
+                            })
+                        }
+                        else{
+                            //初始化/调用评论模块
+                            if(!rateModule.data.login_userId){
+                                rateModule.init({"resourceWasee":_this.data.resourceWasee,"_pool_":_this.data._pool_,"login_userId":_this.data.session_anchor_id,"login_nickname":_this.data.base_nickname,"login_headimgurl":_this.data.base_headimgurl });
+                                rateModule.dom({"obj_type":21022,"obj_id":idd});
+                            }
+                            else{
+                                rateModule.dom({"obj_type":21022,"obj_id":idd});
+                            }
+                        }
+                    }
+                    else{
+                        //初始化/调用评论模块
+                        if(!rateModule.data.login_userId){
+                            rateModule.init({"resourceWasee":_this.data.resourceWasee,"_pool_":_this.data._pool_,"login_userId":_this.data.session_anchor_id,"login_nickname":_this.data.base_nickname,"login_headimgurl":_this.data.base_headimgurl });
+                             rateModule.dom({"obj_type":21022,"obj_id":idd});
+                        }
+                        else{
+                             rateModule.dom({"obj_type":21022,"obj_id":idd});
+                        }
+                    }
+                });
+            }
+        }
+	</script>
+</body>
+</html>

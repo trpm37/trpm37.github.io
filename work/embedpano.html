@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>720Think 加载场景</title>
+    <style type="text/css">
+		body{background-color: #223545;color:#FFFFC5;}
+        .mainBox{font-size:16px;}
+    </style>
+  </head>
+<body>
+
+
+    <pre class="mainBox">
+        &lt;div id="panoBox"&gt;&lt;/div&gt;
+
+       //加载场景
+        function load_pano(obj){
+            $("#panoBox").html('');
+            var config_myserver = '{$Think.config.think720_config.myserver}';
+            var config_mypath = '__TMPL__/_static/home/krpano/';
+            var xml_url="{:U('think720/home/doGetPreviewXml')}&id="+obj.media_id+"&vkey="+obj.vkey+"&hmat=0&vmat=0&fmat=100&littleplanetintro=true";
+            embedpano({
+                html5: "auto",
+                target: "panoBox",
+                xml: xml_url,
+                wmode: "opaque",
+                passQueryParameters: true,
+                mwheel:true,
+                webglsettings:{preserveDrawingBuffer:true},
+                initvars:{
+                    mypath:config_mypath,
+                    time:"20161009",
+                    myserver : config_myserver,
+                    hmat : -24,
+                    vmat : 6,
+                    fmat : 70,
+                    gyro : true
+                }
+            });
+        }
+    </pre>
+
+	<script type="text/javascript" charset="utf-8">
+
+	</script>
+</body>
+</html>

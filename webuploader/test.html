@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>百度上传</title>
+    <link rel="stylesheet" type="text/css" href="lib/webuploader.css">
+    <script type="text/javascript" src="../public/js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="lib/webuploader.js"></script>
+    <style>
+        body,div{margin: 0;padding: 0;font-size: 14px;box-sizing:border-box;}
+        .main{padding: 30px 20px;}
+        .item{display: flex; margin-bottom: 20px;}
+        .item .info{flex:1;}
+        .item .tips{color:#666;}
+        
+    	.upBtn{position: relative;display:inline-block;height: 35px;line-height: 35px;width: 200px;text-align: center; background-color: #00dea5;color: #fff;}
+        #upBtn1{padding: 5px 10px;}
+        .upImg-d{position: relative; width: 200px; height:100px;}
+        .upImg-d img{width: 100%;height: 100%;}
+        .upImg-d .upImg{position: absolute;left: 0;top: 0;z-index: 1; width: 100%;height: 100%;}
+        .upImg2 img{width: 100px;}
+    </style>
+
+</head>
+
+<body>
+
+<div class="main">
+    <div class="item">
+        <span class="lab">说明：</span>
+        <div class="info">
+            <div>
+                <a class="a" href="js.html" target="_blank">点击查看</a>
+            </div>
+            <div class="tips"></div>
+        </div>
+    </div>
+
+    <div class="upBtn" id="upBtn1">测试上传</div>
+
+    <div style="margin-top:100px;">
+        <div class="upBtn" id="upBtn2">添加上传按钮</div>
+    </div>
+
+    <div style="margin-top:100px;">
+        <div class="upBtn" id="upBtn3"></div>
+    </div>
+
+    <div style="margin-top:100px;">
+        <div class="upImg-d">
+            <img src="../public/images/img_200x100.png" alt="">
+            <div class="upImg" id="upImg"></div>
+        </div>
+    </div>
+
+    <div style="margin-top:100px;">
+        <div class="upImg2" id="upImg2"><img src="../public/images/img_50x50.png" alt=""></div>
+    </div>
+</div>
+<script type="text/javascript" src="js/trpm-webuploader.js"></script>
+<script>
+        
+</script>
+
+</body>
+</html>
