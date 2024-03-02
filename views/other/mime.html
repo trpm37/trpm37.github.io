@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>mime 大全 上传文件时可用到</title>
+    <link rel="stylesheet" type="text/css" href="../public/css/trpm-public.css">
+	<link rel="stylesheet" type="text/css" href="../public/css/style.css">
+    <style type="text/css">
+        body{background-color: #223545;color:#999;}
+        .mainBox{font-size:16px;}
+        .btn{position:absolute;right:10px;top:10px;z-index:1;display:inline-block;padding:5px 20px;line-height:20px;color:#fff;font-size:14px;background-color:#EE7701;border-radius:5px;}
+        .explainBox{display: none;font-size:14px;color: dimgray;}
+    </style>
+    <script type="text/javascript" src="../public/js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="../../public/js/trpm-public.js"></script>
+	<script type="text/javascript">
+        trpm_publicModule.init({"public_path":"../public/"});
+    </script>
+  </head>
+<body>
+    <span class="btn" atr="0">说明</span>
+    <pre class="mainBox">
+
+        //mime 大全
+        var mimeObj=[
+            {"",        "*/*"},
+            {"*",       "application/octet-stream"},
+            {".3gp",    "video/3gpp"},   
+            {".apk",    "application/vnd.android.package-archive"},   
+            {".asf",    "video/x-ms-asf"},   
+            {".avi",    "video/x-msvideo"},   
+            {".bin",    "application/octet-stream"},   
+            {".bmp",    "image/bmp"},   
+            {".c",      "text/plain"},   
+            {".css",     "text/css"},
+            {".class",  "application/octet-stream"},   
+            {".conf",   "text/plain"},   
+            {".cpp",    "text/plain"},   
+            {".doc",    "application/msword"},   
+            {".docx",   "application/vnd.openxmlformats-officedocument.wordprocessingml.document"},
+            {".dll",     "application/x-msdownload"},
+            {".exe",    "application/octet-stream"},   
+            {".gif",    "image/gif"},   
+            {".gtar",   "application/x-gtar"},   
+            {".gz",     "application/x-gzip"},   
+            {".h",      "text/plain"},   
+            {".htm",    "text/html"},   
+            {".html",   "text/html"},   
+            {".ico",    "image/x-icon"},
+            {".ipk",    "application/vnd.webos.ipk"},
+            {".ipa",    "application/octet-stream.ipa"},   
+            {".jar",    "application/java-archive"},   
+            {".java",   "text/plain"},   
+            {".jpeg",   "image/jpeg"},   
+            {".jpg",    "image/jpeg"},   
+            {".js",     "application/x-javascript"},   
+            {".log",    "text/plain"},   
+            {".m3u",    "audio/x-mpegurl"},   
+            {".m4a",    "audio/mp4a-latm"},   
+            {".m4b",    "audio/mp4a-latm"},   
+            {".m4p",    "audio/mp4a-latm"},   
+            {".m4u",    "video/vnd.mpegurl"},   
+            {".m4v",    "video/x-m4v"},    
+            {".mov",    "video/quicktime"},   
+            {".mp2",    "audio/x-mpeg"},   
+            {".mp3",    "audio/x-mpeg"},   
+            {".mp4",    "video/mp4"},   
+            {".mpc",    "application/vnd.mpohun.certificate"},          
+            {".mpe",    "video/mpeg"},     
+            {".mpeg",   "video/mpeg"},     
+            {".mpg",    "video/mpeg"},     
+            {".mpg4",   "video/mp4"},      
+            {".mpga",   "audio/mpeg"},   
+            {".msg",    "application/vnd.ms-outlook"},   
+            {".mdb",     "application/x-msaccess"},
+            {".ogg",    "audio/ogg"},   
+            {".pdf",    "application/pdf"},   
+            {".png",    "image/png"},   
+            {".pps",    "application/vnd.ms-powerpoint"},   
+            {".ppt",    "application/vnd.ms-powerpoint"},   
+            {".pptx",   "application/vnd.openxmlformats-officedocument.presentationml.presentation"},   
+            {".prop",   "text/plain"},   
+            {".rc",     "text/plain"},   
+            {".rmvb",   "audio/x-pn-realaudio"},   
+            {".rar",    "application/x-rar-compressed"},
+            {".rtf",    "application/rtf"},   
+            {".svg",     "image/svg+xml"},
+            {".swf",     "application/x-shockwave-flash"},
+            {".sh",     "text/plain"},   
+            {".src",     "application/x-wais-source"},
+            {".tar",    "application/x-tar"},      
+            {".tgz",    "application/x-compressed"},    
+            {".txt",    "text/plain"},   
+            {".wav",    "audio/x-wav"},   
+            {".wma",    "audio/x-ms-wma"},   
+            {".wmv",    "audio/x-ms-wmv"},   
+            {".wps",    "application/vnd.ms-works"},   
+            {".xml",    "text/plain"},   
+            {".xla",     "application/vnd.ms-excel"},
+            {".xlc",     "application/vnd.ms-excel"},
+            {".xlm",     "application/vnd.ms-excel"},
+            {".xls",    "application/vnd.ms-excel"},    
+            {".xlsx",   "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"},   
+            {".z",      "application/x-compress"},
+            {".zip",    "application/zip"},
+            {".zip",    "application/x-zip-compressed"},
+            {".stl",    "application/vnd.ms-pkistl"}
+        ];
+    </pre>
+
+    <pre class="explainBox">
+        网址1:https://www.w3school.com.cn/media/media_mimeref.asp
+    </pre>
+
+    <div class="copyright">
+        <a href="http://www.beian.miit.gov.cn/" target="_blank">豫ICP备19017767号</a>
+    </div>
+
+    <script type="text/javascript" charset="utf-8">
+        $(".btn").click(function(){
+            var atr=$(this).attr("atr");
+            if(atr=="0"){
+                $(this).attr("atr","1");
+                $(".mainBox").hide();
+                $(".explainBox").show();
+            }
+            else{
+                $(this).attr("atr","0");
+                $(".mainBox").show();
+                $(".explainBox").hide();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>jscolor Sandbox</title>
+	<style>
+		.color{width: 40px;height: 40px;background-color: #000;}
+	</style>
+</head>
+
+<body>
+
+
+
+
+
+<script src="jscolor.js"></script>
+<div>
+Color: <input value="#000000" data-jscolor="{backgroundColor: '#333',width: 121,height: 121}">
+</div>
+<br>
+<div>
+	<div class="color" data-jscolor="{valueElement:'#color_value',backgroundColor: '#333',width: 121,height: 121}"></div>
+	<input id="color_value" value="#000000" >
+</div>
+<br>
+<div>
+	<div class="color" data-jscolor="{valueElement:'#color_value2', alphaElement:'#color_alp',backgroundColor: '#333',width: 121,height: 121}"></div>
+	<input id="color_value2" value="rgba(0,0,0,0.8)" >
+	<input id="color_alp" value="" >
+</div>
+
+
+
+
+</body>
+</html>
+<!-- Downloaded from http://jscolor.com -->

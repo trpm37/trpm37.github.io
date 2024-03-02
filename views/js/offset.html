@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>js 位置</title>
+    <link rel="stylesheet" type="text/css" href="../public/css/trpm-public.css">
+    <link rel="stylesheet" type="text/css" href="../public/css/style.css">
+    <style type="text/css">
+        *{margin: 0;padding: 0;}
+		body{background-color: #223545;color:#999;}
+        .mainBox{padding: 50px 10px;font-size:14px;}
+        .a{word-wrap:break-word;color:green;}
+        .line{padding-top: 10px;padding-bottom: 10px;}
+        .item{display: flex; line-height: 20px; margin-bottom: 10px;}
+        .item .lab{padding-right: 12px;}
+        .item .info{flex:1;}
+        .item .info .li{color: #000;}
+        .item .info .z{color: #777;}
+        .tips{padding-left: 20px;padding-top: 3px; color: #777;}
+        .pre{width: 100%;}
+    </style>
+    <script type="text/javascript" src="../public/js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="../public/js/trpm-public.js"></script>
+    <script type="text/javascript">
+          trpm_publicModule.init({"public_path":"../public/"});
+    </script>
+  </head>
+<body>
+    <div class="mainBox">
+        
+        <div class="line">-----------------------------JS下offsetLeft，style.left，以及jQuery中的offset().left，css("left")的区别-------------------------------------</div>
+        <div class="item">
+            <div class="lab">offsetLeft  style.left  offset().left  css("left")</div>
+            <div class="info">
+                <div class="li">链接1：<a class="a" href="https://www.cnblogs.com/liucong7708/p/6097386.html" target="_blank">https://www.cnblogs.com/liucong7708/p/6097386.html</a></div>
+            </div>
+            <div class="tips">注解：1.offset offsetLef offset（）的就没有单位 px ，2.jquery的offset().left，它永远是相对于文档的左边缘，不是body！！！</div>
+        </div>
+        
+    </div>
+
+	<script type="text/javascript" charset="utf-8">
+
+	</script>
+</body>
+</html>

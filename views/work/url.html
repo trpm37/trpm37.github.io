@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>跳转地址</title>
+    <style type="text/css">
+		body{background-color: #223545;color:#FFFFC5;}
+        .mainBox{font-size:16px;}
+    </style>
+  </head>
+<body>
+    <pre class="mainBox">
+
+        window.location.href="{:U('Wasee/VRHome/home')}&id="+id;
+
+        window.location.href="/Wasee/VRHome/home?id="+id;
+
+        window.location.href="{$Think.config.protocol}{$Think.config.domain_name}/Wasee/VRHome/home?id="+id;
+
+        window.location.href=location.protocol + "//" + document.domain + "/index.php?g=Wasee&m=VRHome&a=home&id="+id;
+
+        window.location.href=location.protocol + "//" + document.domain + "/Wasee/VRHome/home?id="+id;
+    </pre>
+
+	<script type="text/javascript" charset="utf-8">
+
+	</script>
+</body>
+</html>

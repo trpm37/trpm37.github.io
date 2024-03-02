@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>公共js/css</title>
+    <link rel="stylesheet" type="text/css" href="css/trpm-public.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+    <style type="text/css">
+        body{background-color: #fff;color: #333;}
+        .line{color: #999;}
+        .ts{padding-bottom: 10px;font-size: 1.6rem;color: #666;}
+    </style>
+	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		var paramObj={
+            "resourcePublic":'{$Think.config.__resourcePublic__}',
+		};
+	</script>
+	<script type="text/javascript" src="js/trpm-public.js"></script>
+  </head>
+<body>
+    <div class="mainBox">
+        <div class="line">-----------------------------异步加载js并判断是否加载完成-------------------------------------</div>
+        <div style="padding-bottom: 10px;">
+            <pre class="pre">
+                trpm_publicModule.loadScript({
+                    "id":"cookie_script", //引入js的id
+                    "src":paramObj.resourcePublic+'/js/jquery-plugin/jquery.cookie.js', //引入js的连接
+                    "callBack":function(){
+                        console.log("加载完js后回调我了");
+                    }
+                });
+            </pre>
+        </div>
+        <div class="line">-----------------------------switch-------------------------------------</div>
+        <div style="padding-bottom: 10px;">
+            <div class="trpm-switch" data-name="status" data-atr="0">
+                <div class="trpm-sw"><div class="trpm-round"></div></div>
+            </div>
+            &nbsp;&nbsp; 
+            <div class="trpm-switch trpm-switch-on" data-name="status" data-atr="1">
+                <div class="trpm-sw"><div class="trpm-round"></div></div>
+            </div>
+        </div>
+        <div class="line">-----------------------------消息弹框-------------------------------------</div>
+        <div style="padding-bottom: 10px;">
+            <div class="ts">显示：trpm_publicModule.alertMsg({"ty":0文本1图片2图文,"txt":"成功","icon":"url","second":毫秒,"z_index":层级})</div>
+            <div class="ts">移除：trpm_publicModule.alertMsgRemove()</div>
+            <div class="trpm-btn" id="trpm-btn1">消息</div> 
+            &nbsp;&nbsp; 
+            <div class="trpm-btn" id="trpm-btn2">加载中</div> 
+        </div>
+
+        <div class="line">-----------------------------select-------------------------------------</div>
+        <div style="padding-bottom: 10px;">
+            <div class="ts">显示：trpm_publicModule.select({"data":[{"key":"链接","val":1},{"key":"电话","val":2}],"callBack":function(){},"sel_callBack":function(){}});</div>
+            <div class="trpm-btn" id="trpm-btn5">添加选择框</div>
+            <div class="aaa" style="width: 200px;"></div>
+            <div class="bbb" style="color:red;"></div>
+        </div>
+        <!-- <div class="trpm-sel" data-name="linktype" data-val="" style="width: 200px;">
+            <div class="trpm-flex-y nm">
+                <span class="lab">请选择</span>
+                <span class="sj trpm-sj"></span>
+            </div>
+            <div class="options">
+                <div class="scroll">
+                    <div class="list">
+                        <div class="trpm-flex-y option" data-val="1"><div class="txt">链接</div></div>
+                        <div class="trpm-flex-y option" data-val="2"><div class="txt">音图文</div></div>
+                        <div class="trpm-flex-y option" data-val="3"><div class="txt">电话</div></div>
+                        <div class="trpm-flex-y option" data-val="4"><div class="txt">文章</div></div>
+                        <div class="trpm-flex-y option" data-val="5"><div class="txt">视频</div></div>
+                        <div class="trpm-flex-y option" data-val="6"><div class="txt">导航</div></div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="line">-----------------------------选择弹框-------------------------------------</div>
+        <div style="padding-bottom: 10px;">
+            <div class="ts">显示：trpm_publicModule.alertSelect({"data":[{"key":"上传","val":1},{"key":"取消","val":0}],"callBack":function(){},"z_index":层级});</div>
+            <div class="trpm-btn" id="trpm-btn3">选择</div>
+        </div>
+        <div class="line">-----------------------------内容弹框-------------------------------------</div>
+        <div style="padding-bottom: 10px;">
+            <div class="trpm-btn" id="trpm-btn4">弹框</div>
+        </div>
+        <div class="trpm-alert" id="trpm-alert">
+            <div class="trpm-bk"></div>
+            <div class="trpm-mc">
+                <div class="trpm-x">+</div>
+                <div class="trpm-tl">登录</div>
+                <div class="trpm-content">弹框内容</div>
+            </div>
+        </div>
+        <div class="line">-----------------------------隐藏/移除弹框-------------------------------------</div>
+        <div style="padding-bottom: 10px;">
+            <div class="ts">隐藏：trpm_publicModule.alertHide({"elem":".aa .bb"});</div>
+            <div class="ts">移除：trpm_publicModule.alertRemove({"elem":".aa .bb"});</div>
+            <div class="ts">消息弹框移除：trpm_publicModule.alertMsgRemove()</div>
+        </div>
+    </div>
+
+	<script type="text/javascript" charset="utf-8">
+        $(function(){
+
+            //switch
+            $(".trpm-switch").click(function(){
+                var thisObj=$(this);
+                var switch_w=thisObj.width();
+                var round_w=thisObj.find(".trpm-round").width();
+                var switch_name=thisObj.attr("data-name");
+                var switch_atr=thisObj.attr("data-atr");
+                var params={};
+                if(switch_atr==1){
+                    thisObj.find(".trpm-round").animate({ left: "0px" }, 300,function(){
+                        thisObj.attr("data-atr",0);
+                        thisObj.removeClass("trpm-switch-on");
+                    });
+                }
+                else{
+                    thisObj.find(".trpm-round").animate({ left: (switch_w-round_w)+"px" }, 300,function(){
+                        thisObj.attr("data-atr",1);
+                        thisObj.addClass("trpm-switch-on");
+                    });
+                }
+            });
+            
+            //消息弹框
+            $("#trpm-btn1").click(function(){
+                trpm_publicModule.alertMsg({"ty":0,"txt":"参数错误","second":2000});
+            })
+            //消息弹框-加载
+            $("#trpm-btn2").click(function(){
+                trpm_publicModule.alertMsg({"ty":2,"txt":"加载中","icon":"img/loading.gif"});
+            })
+            //选择弹框
+            $("#trpm-btn3").click(function(){
+                trpm_publicModule.alertSelect({
+                    "data":[
+                        {"key":"上传","val":1},
+                        {"key":"素材库","val":2},
+                        {"key":"取消","val":0}
+                    ],
+                    "callBack":function(reData){
+                        var elem=reData.elem;
+                        $(elem).find(".trpm-li[val=0]").css("margin-top","10px");
+                        //点击
+                        $("body").on("click",elem+" .trpm-li",function(){
+                            var thisObj=$(this)
+                            var val=thisObj.attr("val");
+                            trpm_publicModule.alertMsg({"ty":0,"txt":val,"second":1000});
+                            trpm_publicModule.alertRemove({"elem":elem});
+                        });
+                    }
+                });
+            })
+            //添加选择框
+            $("#trpm-btn5").click(function(){
+                trpm_publicModule.select({
+                    "dom":".aaa",
+                    "name":"aaa",
+                    "data":[
+                        {"key":"电影","val":1},
+                        {"key":"音乐","val":2},
+                        {"key":"旅游","val":3}
+                    ],
+                    "callBack":function(reData){
+                       $(".bbb").text("创建完成");
+                    },
+                    "sel_callBack":function(reData){
+                        $(".bbb").text("已选择："+reData.txt+":"+reData.val);
+                    }
+                });
+            })
+            //内容弹框
+            $("#trpm-btn4").click(function(){
+                $("#trpm-alert").show();
+                trpm_publicModule.alertCenter({"elem":"#trpm-alert .trpm-mc"});
+                //关闭
+                $("#trpm-alert .trpm-bk,#trpm-alert .trpm-x").click(function(){
+                    trpm_publicModule.alertHide({"elem":"#trpm-alert"});
+                })
+            })
+
+        });
+	</script>
+</body>
+</html>

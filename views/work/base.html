@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>ThinkPHP 基本信息</title>
+    <style type="text/css">
+		body{background-color: #223545;color:#ccc;}
+        .mainBox{font-size:16px;}
+    </style>
+  </head>
+<body>
+    <pre class="mainBox">
+        var moudle_page={
+            data: {
+                "protocol": "{$Think.config.protocol}",//协议http://或https://
+                "domain_name": "{$_SERVER['HTTP_HOST']}",//当前域名
+                "v23_domain_name": "{$Think.config.domain_name}",//当前域名
+                "720_domain_name": "{$Think.config.domain720}",//720think域名
+                "wasee_domain_name": "{$Think.config.domain_live}",//蛙色域名
+                "resourcePublic":"{$Think.config.__resourcePublic__}",//public资源路径
+                "resourceV123":"{$Think.config.__resourceV123__}",//V123资源路径
+                "resourceWebapp":"{$Think.config.__resourceWebapp__}",//Webapp资源路径
+                "resource720think":"{$Think.config.__resource720think__}",//720think资源路径
+                "resourceWasee":"{$Think.config.__resourceWasee__}",//Wasee资源路径
+                "session_anchor_id": "{$Think.session.anchor_id}",//登录用户id
+                "session_anchor_auth_id": "{$Think.session.anchor_auth_id}",//微信授权用户id
+                "base_anchor_vkey":"{$_baseRtn_.anchorInfo.vkey}",//登录用户vkey
+                "base_anchor_id":"{$_baseRtn_.anchorInfo.id}",//登录用户id和{$Think.session.anchor_id}相同
+                "base_anchor_pid": "{$_baseRtn_['anchorInfo']['anchor_id']}",//当前登录账号的父id
+                "official_id": "{$Think.config.city_default_pool_id}",//官方账号
+                "anchorInfoFrom": "{$_baseRtn_['anchorInfo']['from']}",//12代表子账号 13法拍房
+                "base_anchor_nickname":"{$_baseRtn_.anchorInfo.nickname}",//昵称
+                "base_anchor_mobile":"{$_baseRtn_.anchorInfo.mobile}",//电话
+                "base_anchor_headimgurl":"{$_baseRtn_.anchorInfo.headimgurl}",//头像
+                "pano_is_buy": "{$_baseRtn_.anchorInfo.pano_is_buy}",//是否购买
+                "format_pano_expire": "{$_baseRtn_.anchorInfo.format_pano_expire}",//购买是否过期
+                "format_package_expire":"{$_baseRtn_['anchorInfo']['format_package_expire']}",
+                "action_name":"{$Think.ACTION_NAME}",//页面名称
+                "_wxAuthCode_": "{$_wxAuthCode_}",
+                "TMPL": '__TMPL__',//相对路径
+                _pool_:"{$Think.get._pool_}",
+            },
+            //初始化
+            init: function(){
+                var _this=this;
+            }
+        }
+    </pre>
+    <div>全局</div>
+    <pre>
+        //是否登录
+        if(paramObj.session_anchor_id){//登录
+        }
+
+        //子账号
+        if(paramObj.anchorInfoFrom==12 &&  paramObj.base_anchor_pid!=paramObj.official_id){
+
+        }
+
+        //是否购买
+        if(paramObj.pano_is_buy==1){//购买
+        }
+        else{未购买
+
+        }
+
+        //购买是否过期
+        if(paramObj.format_pano_expire==""){//过期
+        }
+        else{//未过期
+            
+        }
+    </pre>
+    <div>漫游编辑页</div>
+    <pre>
+        当前场景id：_waseeEditObj.sceneId
+
+        //漫游编辑判断是否购买 
+        if(_waseeEditObj.projectInfoData.product_status==1){//已购买
+        }
+        else if(_waseeEditObj.projectInfoData.product_status==-1){//购买到期
+        }
+
+        景区项目  _waseeEditObj.projectInfoData.wasee_scenic_id>0
+
+        天空之城项目  _waseeEditObj.projectInfoData.wasee_district_id>0
+
+        //景区/天空之城项目添加pano_vkey和pano_type参数
+        if(_waseeEditObj.projectInfoData.wasee_district_id>0||_waseeEditObj.projectInfoData.wasee_scenic_id>0) {
+            xml_url+=(xml_url.indexOf('?')>0 ? "&" : "?")+"pano_vkey="+_waseeEditObj.projectInfoData.vkey;
+            xml_url+="&pano_type="+(_waseeEditObj.projectInfoData.wasee_district_id>0?21004:22001);
+        }
+
+        //官方账号paramObj.official_id值为26内网1
+        if(_waseeEditObj.projectInfoData.anchor_id==26){
+        }
+        if(_waseeEditObj.projectInfoData.anchor_id==paramObj.official_id){
+        }
+
+        //子账号
+        if(paramObj.anchorInfoFrom==12 && _waseeEditObj.projectInfoData.anchor_id!=paramObj.official_id){
+
+        }
+
+        企业版  _waseeEditObj.projectInfoData.enterprise_status>0
+    </pre>
+
+	<script type="text/javascript" charset="utf-8">
+
+	</script>
+</body>
+</html>

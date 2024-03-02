@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>贝塞尔曲线</title>
+	<link rel="stylesheet" type="text/css" href="../public/css/trpm-public.css">
+	<link rel="stylesheet" type="text/css" href="../public/css/style.css">
+	<style type="text/css">
+		.pre{color:#999;}
+    </style>
+	<script type="text/javascript" src="../public/js/jquery-2.1.4.min.js"></script>
+  </head>
+<body>
+    <div class="mainBox">
+		<div class="line">----------------------------------------参考网址--------------------------------------------</div>
+		<div class="ul">
+			<div class="li">地址1：<a class="a" href="https://www.cnblogs.com/yanan-boke/p/8875571.html " target="_blank">https://www.cnblogs.com/yanan-boke/p/8875571.html</a></div>
+			<div class="li">地址2：<a class="a" href="https://www.cnblogs.com/lxiang/p/4995255.html" target="_blank">https://www.cnblogs.com/lxiang/p/4995255.html</a></div>
+			<div class="li">地址3【插件】：<a class="a" href="https://github.com/jsplumb/jsBezier" target="_blank">https://github.com/jsplumb/jsBezier</a></div>
+			<div class="li">地址4【插件】：<a class="a" href="https://zhuanlan.zhihu.com/p/103245947" target="_blank">https://zhuanlan.zhihu.com/p/103245947</a></div>
+			<div class="li">地址5：<a class="a" href="https://juejin.cn/post/6844903542902226951" target="_blank">https://juejin.cn/post/6844903542902226951</a></div>
+			<div class="li">地址6：<a class="a" href="https://segmentfault.com/a/1190000018597975" target="_blank">https://segmentfault.com/a/1190000018597975</a></div>
+			<div class="li">地址7：<a class="a" href="https://www.jb51.net/article/153448.htm" target="_blank">https://www.jb51.net/article/153448.htm</a></div>
+			<div class="li">地址8：<a class="a" href="https://www.cnblogs.com/yanghui0702/p/yanghui20171122.html" target="_blank">https://www.cnblogs.com/yanghui0702/p/yanghui20171122.html</a></div>
+			<div class="li">地址9：<a class="a" href="https://blog.csdn.net/weixin_34321977/article/details/88913209?utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.control&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.control" target="_blank">https://blog.csdn.net/weixin_34321977/article/details/88913209?utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.control&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.control</a></div>
+			<div class="li">地址10：<a class="a" href="https://github.com/Aaaaaaaty/Blog/issues/35" target="_blank">https://github.com/Aaaaaaaty/Blog/issues/35</a></div>
+			<div class="li">地址11：<a class="a" href="https://cubic-bezier.com/#.25,.1,.25,1" target="_blank">https://cubic-bezier.com/#.25,.1,.25,1</a></div>
+			<div class="li">地址12：<a class="a" href="https://www.cnblogs.com/yanghui0702/p/yanghui20171122.html" target="_blank">https://www.cnblogs.com/yanghui0702/p/yanghui20171122.html</a></div>
+		</div>
+
+		<div class="line">-----------------------------示例----------------------------------</div>
+		<pre class="pre">
+			let points=[{x:10,y:10},{x:20,y:20},{x:30,y:10}];
+			let curve_point = CreateBezierPoints(points, 200);
+			console.log(curve_point);
+
+			function CreateBezierPoints(anchorpoints, pointsAmount) {
+				var points = [];
+				for (var i = 0; i < pointsAmount; i++) {
+					var point = MultiPointBezier(anchorpoints, i / pointsAmount);
+					points.push(point);
+				}
+				return points;
+			}
+
+			function MultiPointBezier(points, t) {
+				var len = points.length;
+				var x = 0, y = 0;
+				var erxiangshi = function (start, end) {
+					var cs = 1, bcs = 1;
+					while (end > 0) {
+						cs *= start;
+						bcs *= end;
+						start--;
+						end--;
+					}
+					return (cs / bcs);
+				};
+				for (var i = 0; i < len; i++) {
+					var point = points[i];
+					x += point.x * Math.pow((1 - t), (len - 1 - i)) * Math.pow(t, i) * (erxiangshi(len - 1, i));
+					y += point.y * Math.pow((1 - t), (len - 1 - i)) * Math.pow(t, i) * (erxiangshi(len - 1, i));
+				}
+				return { x: x, y: y };
+			}
+		</pre>
+		
+    </div>
+	
+    <div class="copyright">
+        <a href="http://www.beian.miit.gov.cn/" target="_blank">豫ICP备19017767号</a>
+    </div>
+	
+	<script type="text/javascript" charset="utf-8">
+
+	</script>
+</body>
+</html>

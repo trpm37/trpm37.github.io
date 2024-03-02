@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+    <meta name="Keywords" content="测试canvas滤镜" >
+    <meta name="Description" content="测试canvas滤镜">
+    <meta name="apple-mobile-web-app-title" content="测试canvas滤镜">
+    <title>测试canvas滤镜</title>
+    <script type="text/javascript" src="../public/js/jquery-2.1.4.min.js"></script>
+    <style>
+        body{max-width: 760px;margin:0 auto;padding:0;color: #333;font-size: 14px;font-family: "微软雅黑";background-color: #fff;}
+        div{box-sizing:border-box;}
+        a{text-decoration: none;}
+        /*说明*/
+        .shuomingBtn{position: fixed;right: 10px;top: 10px;z-index: 100;padding: 6px 20px;color: #fff;background-color: #EE7701;border-radius: 5px;}
+        .shuoming{display: none; position: fixed;left: 0;top: 0;z-index: 100;width: 100%;height: 100%;padding-left: 20px;padding-top: 20px;background-color: rgba(0,0,0,0.5);}
+        .shuoming .bk{position: fixed;left: 0;top: 0;z-index: 1;width: 100%;height: 100%;background-color: rgba(0,0,0,0.5);}
+        .shuoming .mc{position: relative;z-index: 2; width: 80%;height: 90%;margin-left: 5%;margin-top: 5%;padding: 10px;box-sizing:border-box; background-color: #fff;}
+        .shuoming .h{color: #EE7701;font-size: 20px;}
+        .shuoming .a{display: block;margin-top: 20px;color: #78afd3;word-wrap:break-word;}
+    </style>
+  </head>
+  <body>
+    <div class="mainBox">
+        <!-- 说明 -->
+        <div class="shuomingBtn">说明</div>
+        <div class="shuoming">
+            <div class="bk"></div>
+            <div class="mc">
+                <div class="h">可参考以下</div>
+                <a class="a" href="https://www.cnblogs.com/moqiutao/p/4843437.html" target="_blank">https://www.cnblogs.com/moqiutao/p/4843437.html</a>
+                <a class="a" href="http://www.jq22.com/yanshi15586" target="_blank">http://www.jq22.com/yanshi15586</a>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" charset="utf-8">
+        var moudle_page={
+            data: {
+                flagObj: null, //设备
+                window_w: $(window).innerWidth(),
+                window_h: $(window).innerHeight()
+            },
+            //初始化
+            init: function(){
+                var _this=this;
+                _this.data.flagObj=_this.navigator_userAgent();
+                //说明
+                $(".shuomingBtn").on("click",function(event) {
+                    $(".shuoming").show();
+                });
+                $(".shuoming").on("click",".bk",function(event) {
+                    $(".shuoming").hide();
+                });
+            },
+            //判断设备
+            navigator_userAgent: function() {
+                var userAgentInfo = navigator.userAgent;
+                var flagObj={"isMobile":false,"isAndroid":false,"isApple":false};
+                var agents = ["Android", "iPhone","SymbianOS", "Windows Phone","iPad", "iPod"];
+                for (var v = 0; v < agents.length; v++) {
+                    if (userAgentInfo.indexOf(agents[v]) > 0) {
+                        flagObj.isMobile=true;
+                        break;
+                    }
+                }
+                if (userAgentInfo.indexOf("Android") > 0) {
+                    flagObj.isAndroid=true;
+                }
+                if (userAgentInfo.indexOf("iPhone") > 0||userAgentInfo.indexOf("iPad") > 0||userAgentInfo.indexOf("iPod") > 0) {
+                    flagObj.isApple=true;
+                }
+                return flagObj;
+            }
+        }
+
+        $(function(){
+            //初始化
+            moudle_page.init();
+        })
+    </script>
+  </body>
+</html>

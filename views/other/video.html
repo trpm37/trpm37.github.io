@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>video 原生控件</title>
+    <link rel="stylesheet" type="text/css" href="../public/css/trpm-public.css">
+    <link rel="stylesheet" type="text/css" href="../public/css/style.css">
+    <style type="text/css">
+        *{margin: 0;padding: 0;}
+		body{background-color: #223545;color:#999;}
+        .mainBox{padding: 50px 10px;font-size:14px;}
+        .a{color:dimgray;text-decoration: none;}
+        .line{padding-top: 10px;padding-bottom: 10px;}
+        .item{line-height: 20px; margin-bottom: 10px;}
+        .item .info .li{padding-left: 20px;color: #000;}
+        .item .info .z{color: #777;}
+        .tips{padding-left: 20px;padding-top: 3px; color: #777;}
+        .pre{width: 100%;}
+        .video{background-color: #000;}
+    </style>
+    <script type="text/javascript" src="../public/js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="../public/js/trpm-public.js"></script>
+    <script type="text/javascript">
+          trpm_publicModule.init({"public_path":"../public/"});
+    </script>
+  </head>
+<body>
+    <div class="mainBox">
+        <div class="item">
+            <div class="lab">说明：</div>
+            <div class="info">
+                <div class="li">video 标签 各种属性及所有事件监听大全：<a class="a" href="https://blog.csdn.net/qq_39137687/article/details/106598537" target="_blank">https://blog.csdn.net/qq_39137687/article/details/106598537</a></div>
+                <div class="li">video 事件：<a class="a" href="https://www.fujieace.com/html/video-event.html" target="_blank">https://www.fujieace.com/html/video-event.html</a></div>
+                <div class="li">播放后浮在最上层问题：<a class="a" href="https://blog.csdn.net/wbdsr234/article/details/86138392" target="_blank">https://blog.csdn.net/wbdsr234/article/details/86138392</a></div>
+            </div>
+        </div>
+
+        <div class="line">-----------------------------video 控件-------------------------------------</div>
+        <video class="video" id="video" width="100%" height="200px" 
+            src="test.mp4"
+            style="object-fit:fill"   <!-- 填充方式 -->  
+            controls  <!-- 这个属性规定浏览器为该视频提供播放控件 -->  
+            poster="./images/video.png" <!-- 封面 -->  
+            preload="auto" <!-- 预加载 --> 
+            controlslist="nodownload" <!-- 禁止下载 -->
+            controlslist="nodownload nofullscreen" <!-- 禁止下载，禁止全屏 -->
+            autoplay  <!-- 自动播放 （不同浏览器的表现不一样） -->  
+            muted  <!-- 默认静音播放（可手动点开继续播放） --> 
+            loop  <!-- 循环播放 -->   
+            x5-video-player-type="h5" <!-- 启用H5播放器,是wechat安卓版特性 -->
+            x5-video-orientation="h5" <!-- 播放器支付的方向，landscape横屏，portraint竖屏，默认值为竖屏 -->
+            x5-video-player-fullscreen="true" <!-- 全屏设置，设置为 true 是防止横屏 -->
+            playsinline="true"  <!-- IOS微信浏览器支持小窗内播放 --> 
+            webkit-playsinline="true"  <!-- 这个属性是ios 10中设置可以让视频在小窗内播放，也就是不是全屏播放 -->  
+            airplay="true" 
+            x-webkit-airplay="true" 
+        </video>
+        <div class="line">-----------------------------video 播放后浮在最上层问题-------------------------------------</div>
+        <div class="item">
+            <pre class="pre">
+                $("#video").attr({
+                    "type":"application/x-mpegURL",
+                    "x5-video-player-type":"h5", //启用H5播放器,是wechat安卓版特性
+                    "x5-video-player-fullscreen":"true", //全屏设置，设置为 true 是防止横屏
+                    "webkit-inline":"true",
+                    "playsinline":"true", //IOS微信浏览器支持小窗内播放
+                    "webkit-playsinline":"true", //这个属性是ios 10中设置可以让视频在小窗内播放，也就是不是全屏播放
+                    "airplay":"allow",
+                    "x-webkit-airplay":"allow",
+                });
+            </pre>
+        </div>
+        <div class="line">-----------------------------video 播放暂停 -------------------------------------</div>
+        <div class="item">
+            <pre class="pre">
+                var video = document.getElementById('video')
+                function playPause() {
+                    if(video.paused)
+                        video.play();
+                    else
+                        video.pause();
+                }  
+            </pre>
+        </div>
+        <div class="line">-----------------------------video 切换地址 -------------------------------------</div>
+        <div class="item">
+            <pre class="pre">
+                var video = document.getElementById('video')
+                video.src = 'test.mp4'           
+            </pre>
+        </div>
+        <div class="line">-----------------------------video 播放时间控制 -------------------------------------</div>
+        <div class="item">
+            <pre class="pre">
+                var video = document.getElementById('_time')
+                console.log(video.currentTime)  // 视频当前正在播放的时间（单位：s），进度条拖到哪就显示当前的时间
+                video.currentTime = 60  // 默认从60秒处开始播放            
+            </pre>
+        </div>
+        <div class="line">-----------------------------video 音量控制-------------------------------------</div>
+        <div class="item">
+            <pre class="pre">
+                var video = document.getElementById('_volume')
+                video.volume = 2 // 取值范围：0 到 1，0 是静音，0.5 是一半的音量，1 是最大音量（默认值）
+            </pre>
+        </div>
+        <div class="line">-----------------------------video 事件监听-------------------------------------</div>
+        <div class="item">
+            <pre class="pre">
+                var video = document.getElementById('video')
+ 
+                // 1、loadstart：视频查找。当浏览器开始寻找指定的音频/视频时触发，也就是当加载过程开始时
+                video.addEventListener('loadstart', function(e) {
+                  console.log('提示视频的元数据已加载')
+                  console.log(e)
+                  console.log(video.duration)            // NaN
+                })
+             
+                // 2、durationchange：时长变化。当指定的音频/视频的时长数据发生变化时触发，加载后，时长由 NaN 变为音频/视频的实际时长
+                video.addEventListener('durationchange', function(e) {
+                  console.log('提示视频的时长已改变')
+                  console.log(e)
+                  console.log(video.duration)           // 528.981333   视频的实际时长（单位：秒）
+                })
+             
+                // 3、loadedmetadata ：元数据加载。当指定的音频/视频的元数据已加载时触发，元数据包括：时长、尺寸（仅视频）以及文本轨道
+                video.addEventListener('loadedmetadata', function(e) {
+                  console.log('提示视频的元数据已加载')
+                  console.log(e)
+                })
+             
+                // 4、loadeddata：视频下载监听。当当前帧的数据已加载，但没有足够的数据来播放指定音频/视频的下一帧时触发
+                video.addEventListener('loadeddata', function(e) {
+                  console.log('提示当前帧的数据是可用的')
+                  console.log(e)
+                })
+             
+                // 5、progress：浏览器下载监听。当浏览器正在下载指定的音频/视频时触发
+                video.addEventListener('progress', function(e) {
+                  console.log('提示视频正在下载中')
+                  console.log(e)
+                })
+             
+                // 6、canplay：可播放监听。当浏览器能够开始播放指定的音频/视频时触发
+                video.addEventListener('canplay', function(e) {
+                  console.log('提示该视频已准备好开始播放')
+                  console.log(e)
+                })
+             
+                // 7、canplaythrough：可流畅播放。当浏览器预计能够在不停下来进行缓冲的情况下持续播放指定的音频/视频时触发
+                video.addEventListener('canplaythrough', function(e) {
+                  console.log('提示视频能够不停顿地一直播放')
+                  console.log(e)
+                })
+             
+                // 8、play：播放监听
+                video.addEventListener('play', function(e) {
+                  console.log('提示该视频正在播放中')
+                  console.log(e)
+                })
+             
+                // 9、pause：暂停监听
+                video.addEventListener('pause', function(e) {
+                  console.log('暂停播放')
+                  console.log(e)
+                })
+             
+                // 10、seeking：查找开始。当用户开始移动/跳跃到音频/视频中新的位置时触发
+                video.addEventListener('seeking', function(e) {
+                  console.log('开始移动进度条')
+                  console.log(e)
+                })
+             
+                // 11、seeked：查找结束。当用户已经移动/跳跃到视频中新的位置时触发
+                video.addEventListener('seeked', function(e) {
+                  console.log('进度条已经移动到了新的位置')
+                  console.log(e)
+                })
+             
+                // 12、waiting：视频加载等待。当视频由于需要缓冲下一帧而停止，等待时触发
+                video.addEventListener('waiting', function(e) {
+                  console.log('视频加载等待')
+                  console.log(e)
+                })
+             
+                // 13、playing：当视频在已因缓冲而暂停或停止后已就绪时触发
+                video.addEventListener('playing', function(e) {
+                  console.log('playing')
+                  console.log(e)
+                })
+             
+                // 14、timeupdate：目前的播放位置已更改时，播放时间更新
+                video.addEventListener('timeupdate', function(e) {
+                  console.log('timeupdate')
+                  console.log(e)
+                  console.log(Math.floor(video.currentTime))
+                })
+             
+                // 15、ended：播放结束
+                video.addEventListener('ended', function(e) {
+                  console.log('视频播放完了')
+                  console.log(e)
+                })
+             
+                // 16、error：播放错误
+                video.addEventListener('error', function(e) {
+                  console.log('视频出错了')
+                  console.log(e)
+                })
+             
+                // 17、volumechange：当音量更改时
+                video.addEventListener('volumechange', function(e) {
+                  console.log('volumechange')
+                  console.log(e)
+                })
+             
+                // 18、stalled：当浏览器尝试获取媒体数据，但数据不可用时
+                video.addEventListener('stalled', function(e) {
+                  console.log('stalled')
+                  console.log(e)
+                })
+             
+                // 19、ratechange：当视频的播放速度已更改时
+                video.addEventListener('ratechange', function(e) {
+                  console.log('ratechange')
+                  console.log(e)
+                })            
+            </pre>
+        </div>
+    </div>
+
+	<script type="text/javascript" charset="utf-8">
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+    <meta name="Keywords" content="图片查看器" >
+    <meta name="Description" content="图片查看器">
+    <meta name="apple-mobile-web-app-title" content="图片查看器">
+    <title>图片查看器</title>
+    <link href = "css/viewer.min.css" rel = "stylesheet">
+    <script type="text/javascript" src="../public/js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="js/viewer.min.js"></script>
+    <style>
+        html{background: #fafafa;}
+        body{max-width: 760px;margin:0 auto;padding:0;color: #333;font-size: 14px;font-family: "微软雅黑";background-color: #fff;}
+        div{box-sizing:border-box;}
+        a{text-decoration: none;}
+        .mainBox{padding-top: 50px;}
+
+        /*说明*/
+        .shuomingBtn{position: fixed;right: 10px;top: 10px;z-index: 100;padding: 6px 20px;color: #fff;background-color: #EE7701;border-radius: 5px;}
+        .shuoming{display: none; position: fixed;left: 0;top: 0;z-index: 100;width: 100%;height: 100%;padding-left: 20px;padding-top: 20px;background-color: rgba(0,0,0,0.5);}
+        .shuoming .bk{position: fixed;left: 0;top: 0;z-index: 1;width: 100%;height: 100%;background-color: rgba(0,0,0,0.5);}
+        .shuoming .mc{position: relative;z-index: 2; width: 80%;height: 90%;margin-left: 5%;margin-top: 5%;padding: 10px;box-sizing:border-box; background-color: #fff;}
+        .shuoming .h{color: #EE7701;font-size: 20px;}
+        .shuoming .a{display: block;margin-top: 20px;color: #78afd3;word-wrap:break-word;}
+        .shuoming .des{padding-top: 30px; color: #666;}
+    </style>
+  </head>
+  <body>
+    <div class="mainBox">
+
+
+        <!-- 说明 -->
+        <div class="shuomingBtn">说明</div>
+        <div class="shuoming">
+            <div class="bk"></div>
+            <div class="mc">
+                <div class="h">可参考以下</div>
+                <a class="a" href="https://fengyuanchen.github.io/viewerjs/" target="_blank">官网：https://fengyuanchen.github.io/viewerjs/</a>
+                <a class="a" href="https://github.com/fengyuanchen/viewerjs" target="_blank">js版本（推荐）：https://github.com/fengyuanchen/viewerjs</a>
+                <a class="a" href="https://github.com/fengyuanchen/jquery-viewer" target="_blank">jquery版本：https://github.com/fengyuanchen/jquery-viewer</a>
+                <div class="des">
+                    js版本需要多引用以下文件 <br/>
+                    viewer.css <br/>
+                    viewer.js <br/> <br/>
+
+                    jquery版本需要多引用以下文件 <br/>
+                    viewer.css <br/>
+                    query.js <br/>
+                    viewer.js <br/>
+                    jquery-viewer.js
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" charset="utf-8">
+
+        var moudle_page={
+            data: {
+                window_w: $(window).innerWidth(),
+                window_h: $(window).innerHeight()
+            },
+            //初始化
+            init: function(){
+                var _this=this;
+                //说明
+                $(".shuomingBtn").on("click",function(event) {
+                    $(".shuoming").show();
+                });
+                $(".shuoming").on("click",".bk",function(event) {
+                    $(".shuoming").hide();
+                });
+            }
+        }
+
+        $(function(){
+            moudle_page.init();
+        })
+
+        $(window).resize(function() {
+            moudle_page.data.window_w=$(window).innerWidth();
+            moudle_page.data.window_h=$(window).innerHeight();
+        });
+
+	</script>
+  </body>
+</html>
